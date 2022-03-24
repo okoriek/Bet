@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/custom.css' %}">
+<div class="container">
+    <div class="background">
+        <center>
+            <h4>REGISTRATION</h4>
+        </center>
+        <div class="form-area">
+            <form method="post">
+                {% if forms.errors %}
+                    <center><span class="error">{{forms.errors}}</span></center>
+                {% endif %}
+                {% for message in messages %}
+                    <center><span class="success">{{message}}</span></center>
+                {% endfor %}
+                <br>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.first_name.label_tag}}
+                            {{forms.first_name}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.last_name.label_tag}}
+                            {{forms.last_name}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.email.label_tag}}
+                            {{forms.email}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.username.label_tag}}
+                            {{forms.username}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.phone_number.label_tag}}
+                            {{forms.phone_number}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            <label for="referral">Referral:</label>
+                            <input type="text" id="referral" name="refercode">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.password1.label_tag}}
+                            {{forms.password1}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="single-input">
+                            {{forms.password2.label_tag}}
+                            {{forms.password2}}
+                        </div>
+                    </div>
+                    <span class="btn-border w-85 mt-5 mb-3">
+                        <button class="cmn-btn w-100">Sign up</button>
+                    </span>
+                </div>
+            </form>
+            <center><span>Already a member? <a href="{% url 'login' %}" style="color: yellow; text-decoration: underline;">Login</a></span></center>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+.background{
+    background-color: #120f54;
+    height: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    padding: 30px;
+    border: 2px rgb(10, 10, 73);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #371255;
+}
+.loginbackground{
+    background-color: #120f54;
+    height: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    padding: 30px;
+    border: 2px rgb(10, 10, 73);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #371255;
+}
+
+@media only screen and (min-width:992px){
+    .loginbackground{
+        background-color: #120f54;
+        height: auto;
+        margin-top: 100px;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-bottom: 30px;
+        padding: 30px;
+        border: 2px rgb(10, 10, 73);
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px #371255;
+    }
+}
+.error{
+    background-color: rgb(248, 107, 107);
+    border: solid 2px red;
+    width: 100%;
+    border-radius: 10px;
+    color: red;
+}
+.success{
+    background-color: rgb(62, 243, 62);
+    border: solid 2px green;
+    width: 100%;
+    border-radius: 10px;
+    color: green;
+}
