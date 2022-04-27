@@ -1,3 +1,4 @@
+
 .background{
     background-color: #120f54;
     height: auto;
@@ -6,7 +7,9 @@
     padding: 30px;
     border: 2px rgb(10, 10, 73);
     border-radius: 10px;
-    box-shadow: 5px 5px 10px #371255;
+    -moz-box-shadow: 0 0 15px #371255;
+    -webkit-box-shadow: 0 0 15px #371255;
+    box-shadow: 0 0 15px #371255;
 }
 .loginbackground{
     background-color: #120f54;
@@ -16,7 +19,9 @@
     padding: 30px;
     border: 2px rgb(10, 10, 73);
     border-radius: 10px;
-    box-shadow: 5px 5px 10px #371255;
+    -moz-box-shadow: 0 0 15px #371255;
+    -webkit-box-shadow: 0 0 15px #371255;
+    box-shadow: 0 0 15px #371255;
 }
 
 @media only screen and (min-width:992px){
@@ -30,7 +35,9 @@
         padding: 30px;
         border: 2px rgb(10, 10, 73);
         border-radius: 10px;
-        box-shadow: 5px 5px 10px #371255;
+        -moz-box-shadow: 0 0 15px #371255;
+        -webkit-box-shadow: 0 0 15px #371255;
+        box-shadow: 0 0 15px #371255;
     }
 }
 .error{
@@ -39,6 +46,7 @@
     width: 100%;
     border-radius: 10px;
     color: red;
+    margin-bottom: 10px;
 }
 .success{
     background-color: rgb(62, 243, 62);
@@ -47,3 +55,82 @@
     border-radius: 10px;
     color: green;
 }
+/*game css */
+.gamebg{
+    background-color:  rgba(90, 15, 187, 0.603);
+    height: 30rem;
+    width: 20rem;
+    margin-top: 150px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.gamebgheader{
+    background-color:rgba(46, 6, 97, 0.603) ;
+    margin-left: 0px;
+    height: 70px;
+    width: 100%;
+    padding-top: 30px;
+}
+.time{
+    font-size: xx-large;
+    float: right;
+    margin-right: 10px;
+    color: yellow;
+}
+.unclicked {
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 50%;
+    height: 50px;
+    padding-bottom: 20px;
+    margin-left: 7.5px;
+    width: 50px;   
+}
+.text{
+    margin-top: 10px;
+}
+.balls{
+    display: inline;    
+}
+@media only screen and (min-width:992px){
+    .text{
+        margin-top: 0px;
+        font-size: medium;
+    }
+}
+
+#picks{
+    border: 2px solid yellow;
+    width: 98%;
+    height: 65px;
+    margin-top: 15px;
+    border-radius: 15px;
+    padding-left: 5px;
+}
+.clickcircle{
+    background-color: yellow;
+    border: 2px solid white;
+}
+.clicked{
+    display: inline-block;
+    background: black;
+    margin-top:5px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    height: 50px;
+    padding-bottom: 10px;
+    margin-right: 5px;
+    width: 50px;
+    color: #000;
+    text-align: center;
+    padding-top: 15px;
+    font-size: x-large;
+    font-weight: bold;
+    background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+
+}
+
+
+

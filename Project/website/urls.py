@@ -17,7 +17,10 @@ urlpatterns = [
    path('logout/', LogoutView.as_view(), name = 'logout'),
    path('verification/<uidb64>/<token>/', views.EmailVerification, name='verification'),
    path('dashboard/', views.Dashboard, name = 'dashboard'),
-
+   path('games/random10/', views.RandomTen, name='randomten'),
+   path('getnumbers/', views.GetNumbers, name='numbers'),
+   
+   
    path('password_reset/', PasswordResetView.as_view(template_name = 'password/passwordreset.html'), name='reset_password'),
    path('password_reset_done/', PasswordResetDoneView.as_view(template_name = 'password/passwordresetdone.html'), name='password_reset_done'),
    path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name = 'password/passwordresetconfirm.html'), name='password_reset_confirm'),

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+<link rel="stylesheet" href="{% static 'website/custom.css' %}">
 <section class="dashboard-content pt-120">
     <div class="overlay">
         <div class="dashboard-heading">
@@ -27,11 +28,6 @@
                                 <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
                                     data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
                                     aria-selected="false">withdraw</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="buy-crypto-tab" data-bs-toggle="tab"
-                                    data-bs-target="#buy-crypto" type="button" role="tab" aria-controls="buy-crypto"
-                                    aria-selected="false">buy crypto</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
@@ -88,6 +84,9 @@
                         <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
                             aria-labelledby="dashboard-tab">
                             <div class="row">
+                                {% if form.errors %}
+                                    <center><span class="error">{{form.errors}}</span></center>
+                                {% endif %}
                                 <div class="col-xl-4 col-lg-6">
                                     <div class="single-info">
                                         <img src="{% static 'assets/images/icon/user-info-icon-1.png' %}" alt="icon">
@@ -818,6 +817,37 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="setting-personal-details login-password mt-3">
+                                    <h5>Modify Login Password</h5>
+                                    <form action="#" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="single-input">
+                                                    {{form.old_password.label_tag}}
+                                                    {{form.old_password}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="single-input">
+                                                    {{form.new_password1.label_tag}}
+                                                    {{form.new_password1}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="single-input">
+                                                    {{form.new_password2.label_tag}}
+                                                    {{form.new_password2}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <span class="btn-border">
+                                                    <button class="cmn-btn">Submit</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

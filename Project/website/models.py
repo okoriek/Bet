@@ -1,8 +1,8 @@
-from django.db import models
-
+from time import time
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.crypto import get_random_string
+from django.utils import timezone
 
 class MyUserManager(BaseUserManager):
     def create_user(self,email, first_name,last_name,username,password=None):
@@ -48,6 +48,7 @@ class User(AbstractBaseUser):
     phone_number  = models.CharField(max_length=100)
     code = models.CharField(max_length=8, blank=True, unique=True, null=True,default=get_random_string(length=8))
     recommended_by = models.CharField(blank=True, null=True, max_length=300)
+    balance = models.IntegerField(default=0)
     
     date_joined   = models.DateTimeField(auto_now_add=True) 
     last_login    = models.DateTimeField(auto_now_add=True)   
@@ -73,6 +74,48 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, add_label):
         return True
+class Result(models.Model):
+    round = models.CharField(max_length=10000000)
+    outcome =  models.CharField(max_length=50, blank=True, null=True)
+    date_generated =  models.DateTimeField(default=timezone.now)
+    
+
+    def __str__(self):
+        return self.outcome
+        
+class Duration(models.Model):
+    time = models.IntegerField(default=10)
+
+    def __str__(self):
+       return str(self.time)
+
+class NumberedValue(models.Model):
+    option_value = models.IntegerField(verbose_name='number')
+    correct_value = models.BooleanField(default=False)
+    
+
+    def __str__(self):
+        return str(self.option_value)
+
+
+
+class Game(models.Model):
+    STATUS = (
+        ('won', 'WON'),
+        ('pending', 'PENDING'),
+        ('loss', 'LOSS')
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    result = models.ForeignKey(Result, on_delete=models.SET_NULL, blank=True, null=True )
+    winning =  models.IntegerField(blank=True, null=True)
+    option = models.ManyToManyField(NumberedValue, blank=True  )
+    status = models.CharField(max_length=50, choices=STATUS, default='pending')
+    date_created = models.DateTimeField(default=timezone.now)
+
+
+    def __str__(self):
+        return self.user
+    
 
 
 

@@ -14,3 +14,13 @@ class AccountAdmin(UserAdmin):
     fieldsets = ()
 
 admin.site.register(User, AccountAdmin)
+@admin.register(Game)
+class CustomGame(admin.ModelAdmin):
+    list_display = ('user','result','winning', 'status')
+    search_fields = ('user',)
+    list_filter = ('status',)
+    
+
+admin.site.register(Result)
+admin.site.register(NumberedValue)
+admin.site.register(Duration)

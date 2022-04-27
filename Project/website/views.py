@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import redirect, render
-from .models import User
-from django.http import HttpResponse
+from .models import Duration, Game, NumberedValue, Result, User
+from django.http import HttpResponse, JsonResponse
 from . form import RegisterationForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -11,6 +11,8 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from .utils import TokenGenerator
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.core import serializers
 
 
 def Home(request):
@@ -65,7 +67,33 @@ def Register(request):
     return render(request, 'website/register.html', args)
 
 def Dashboard(request):
-    user = request.user
-    profile = User.objects.filter(recommended_by = user.username)
-    context = {'profile':profile}
-    return render(request, 'website/dashboard.html', context)
+    profile = User.objects.filter(recommended_by = request.user.username)
+    if request.method=='POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save
+            messages.success(request, 'Password updated successfully.')
+            return redirect('/login')
+    else:
+        form = PasswordChangeForm(request.user)
+    args = {'form':form, 'profile':profile}
+    return render(request, 'website/dashboard.html', args)
+
+def RandomTen(request):
+    number =  NumberedValue.objects.all()
+    args = {'number': number}
+    return render(request, 'website/randomten.html', args)
+
+def GetNumbers(request):
+    number =  NumberedValue.objects.all()
+    time_value = Duration.objects.get(pk=1)
+    data = []
+    for obj in number:
+        item= {
+            'id':obj.id,
+            'value': obj.option_value
+        }
+        data.append(item)
+    return JsonResponse({'data': data, 'time':time_value.time})
+
+
