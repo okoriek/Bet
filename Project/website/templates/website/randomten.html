@@ -2,24 +2,29 @@
 {% load static %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'website/custom.css' %}">
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 gamebg">
-            <div class="gamebgheader">
 
 
-            </div>
-            <div class="balls">
-                
-            </div>
-            
-            <div id="picks">
-                
-        
-            </div>
-        </div>    
-    </div>
+<div class="successimg">
+    <img src="{% static 'assets/images/success.gif' %}" alt="" id="successimg">
 </div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-3 d-none d-lg-block ">
+        <img src="{% static 'assets\images\soccer-bets-bg.png' %}" height="200px" alt="unable to load image">
+    </div>
+    <div class="col-lg-6">
+        <div class="row" id="gamebg"></div>
+    </div>
+    <div class="col-md-3 d-none d-lg-block    " >
+        <img src="{% static 'assets\images\soccer-bets-bg.png' %}" height="200px" alt="unable to load image">
+    </div>
+    
+
+</div>
+
 <script src="{% static 'assets/js/jquery.min.js' %}"></script>
 <script src="{% static 'website/custom.js' %}"></script>
 {% endblock %}

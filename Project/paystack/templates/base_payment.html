@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/custom.css' %}">
+<section class="dashboard-content pt-120">
+    <div class="overlay">
+        <div class="dashboard-heading">
+            <div class="container">
+                <div class="row justify-content-lg-end justify-content-between">
+                    <div class="col-xl-9 col-lg-12">
+                        <ul class="nav" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab"
+                                    data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+                                    aria-selected="true">dashboard</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="{% url 'paystack:deposit' %}"><button class="nav-link" id="deposit-tab"
+                                        type="button" aria-selected="false">deposit</button></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
+                                    data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
+                                    aria-selected="false">withdraw</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
+                                    data-bs-target="#affiliate" type="button" role="tab" aria-controls="affiliate"
+                                    aria-selected="false">affiliate</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="transactions-tab" data-bs-toggle="tab"
+                                    data-bs-target="#transactions" type="button" role="tab" aria-controls="transactions"
+                                    aria-selected="false">transactions</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting"
+                                    type="button" role="tab" aria-controls="setting"
+                                    aria-selected="false">settings</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-3">
+                <div class="dashboard-sidebar">
+                    <div class="single-item">
+                        <img src="{% static 'assets/images/profile-img-1.png' %}" alt="images">
+                        <h5>Philip Dunn</h5>
+                        <p>ID: 32315145</p>
+                    </div>
+                    <div class="balance">
+                        <div class="single-item">
+                            <img src="{% static 'assets/images/icon/dashboard-sidebar-icon-1.png' %}" alt="images">
+                            <h5>$5135.00</h5>
+                            <p>Available Balance</p>
+                        </div>
+                        <div class="bottom-area d-flex align-items-center justify-content-between">
+                            <a href="javascript:void(0)" class="mdr withdraw-btn">Withdraw</a>
+                            <a href="javascript:void(0)" class="mdr deposit-btn">Deposit</a>
+                        </div>
+                    </div>
+                    <div class="single-item">
+                        <img src="{% static 'assets/images/icon/dashboard-sidebar-icon-2.png' %}" alt="images">
+                        <h5>Need Help?</h5>
+                        <p class="mdr">Have questions? Our experts are here to help!.</p>
+                        <span class="btn-border">
+                            <a href="contact.html" class="cmn-btn">Get Start Now</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
+                        aria-labelledby="dashboard-tab">
+                        <div class="row">
+                            {% block content %}
+
+                            {% endblock %}
+</section>
+<!-- Dashboard Content Section end -->
+{% endblock %}
+</html>

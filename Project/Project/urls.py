@@ -22,4 +22,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
+    path('', include('flutterwave.urls', namespace='flutterwave')),
+    path('deposit/', include('paystack.urls', namespace='paystack')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

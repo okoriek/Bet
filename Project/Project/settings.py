@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from telnetlib import LOGOUT
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,6 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-h_-mw2x7)q**%bi%pjwaewxcuy*-ziit_5e-&q68l&*k=w7=$b'
+
+PAYSTACK_PUBLIC_KEY = config('PUBLIC_SECRET_KEY')
+PAYSTACK_PRIVATE_KEY = config('PRIVATE_SECRET_KEY')
+FLUTTERWAVE_PUBLIC_KEY = config('FLUTTERWAVE_PUBLIC_KEY')
+FLUTTERWAVE_SECRET_KEY = config('FLUTTERWAVE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website.apps.WebsiteConfig',
+    'paystack.apps.PaystackConfig',
+    'flutterwave.apps.FlutterwaveConfig',
+
+    #external installed app
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +70,7 @@ AUTH_USER_MODEL = 'website.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,11 +113,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/lagos'
 
 USE_I18N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

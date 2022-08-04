@@ -1,6 +1,10 @@
-import django
+from calendar import week
+import email
+from inspect import ArgSpec
+from time import strptime
+from turtle import update
 from django.shortcuts import redirect, render
-from .models import Duration, Game, NumberedValue, Result, User
+from .models import Duration, Game, GameRound, NumberedValue, Result, User
 from django.http import HttpResponse, JsonResponse
 from . form import RegisterationForm
 from django.contrib.sites.shortcuts import get_current_site
@@ -13,6 +17,13 @@ from .utils import TokenGenerator
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
+import datetime
+from django.utils import timezone
+from paystack.models import Userhistory
+from .form import FileterForm
+
+
 
 
 def Home(request):
@@ -66,7 +77,7 @@ def Register(request):
     args = {'forms':forms}
     return render(request, 'website/register.html', args)
 
-def Dashboard(request):
+def ChangePassword(request):
     profile = User.objects.filter(recommended_by = request.user.username)
     if request.method=='POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -77,7 +88,27 @@ def Dashboard(request):
     else:
         form = PasswordChangeForm(request.user)
     args = {'form':form, 'profile':profile}
-    return render(request, 'website/dashboard.html', args)
+    return render(request, 'website/change_password.html', args)
+
+def Dashboard(request):
+    history = Userhistory.objects.all().filter(email=request.user.email).values()[:10]
+    arg = {'history':history}
+    return render(request, 'website/dashboard.html', arg)
+    
+@csrf_exempt
+def FilterHistory(request):
+    current_time = datetime.date.today()
+    print(current_time)
+    history =  Userhistory.objects.all().filter(email= request.user.email)
+    filter = FileterForm(request.GET, queryset=history)
+    history = filter.qs
+    args = {'filter': filter, 'history':history}
+    return render(request , 'website/transaction.html', args)
+    
+
+
+    
+    
 
 def RandomTen(request):
     number =  NumberedValue.objects.all()
@@ -86,14 +117,42 @@ def RandomTen(request):
 
 def GetNumbers(request):
     number =  NumberedValue.objects.all()
-    time_value = Duration.objects.get(pk=1)
+    duration  = GameRound.objects.filter(ended=False)[:4]
+    time = []
     data = []
+    for i in duration:
+        item={
+            'week':i.week,
+            'created': i.time_generated,
+            'expire': i.time_ending
+
+        }
+        time.append(item)
     for obj in number:
         item= {
-            'id':obj.id,
             'value': obj.option_value
         }
         data.append(item)
-    return JsonResponse({'data': data, 'time':time_value.time})
+    return JsonResponse({'data': data, 'time':time})
+    
+@csrf_exempt
+def RecieveNumbers(request):
+    email =  request.user
+    selectednum = request.POST.getlist('list[]')
+    wk =  request.POST['week']
+    gaming =  GameRound.objects.get(week=int(wk))
+    if request.POST:
+        new = Game.objects.create(user = email, selectednumber=selectednum, week=gaming)
+        new.save()
+        user = User.objects.get(email = email)
+        user.balance -= 500
+        user.save()
+    return HttpResponse('submitted successfully')
+
+def Payment(request):
+    
+    return render(request, 'website/deposit.html')
+
+
 
 

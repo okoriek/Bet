@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="{% static 'assets/css/arafat-font.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugin/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    
 </head>
+
 <body>
     <!-- start preloader -->
     <div class="preloader" id="preloader"></div>
@@ -31,7 +33,7 @@
 
     <!-- header-section start -->
     <header class="header-section">
-    {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
         <div class="overlay">
             <div class="container">
                 <div class="row d-flex header-area">
@@ -50,15 +52,18 @@
                                 </li>
                                 <li class="nav-item dropdown main-navbar">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Dashboard</a>
+                                        data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside">{{request.user.email}}</a>
                                     <ul class="dropdown-menu main-menu shadow">
                                         <li><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
                                         <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                              data-bs-auto-close="outside">Setting</a>
+                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Setting</a>
                                             <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="personal-details-setting.html">Personal Details</a></li>
-                                                <li><a class="nav-link" href="modify-login-password.html">Change Password</a></li>
+                                                <li><a class="nav-link" href="personal-details-setting.html">Personal
+                                                        Details</a></li>
+                                                <li><a class="nav-link" href="{% url 'changepassword' %}">Change
+                                                        Password</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -72,49 +77,12 @@
                                         <li><a class="nav-link" href="soccer-bets-2.html">NBA</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Currency</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="escrow-bets-fee.html">Escrow Bets Fee</a></li>
-                                        <li><a class="nav-link" href="currency-bet.html">Currency Bet</a></li>
-                                        <li><a class="nav-link" href="betting-details.html">Betting Details</a></li>
-                                        <li><a class="nav-link" href="create-new-currency.html">Create Currency</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                              data-bs-auto-close="outside">Tournaments</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>
-                                                <li><a class="nav-link" href="tournaments-details.html">Tournaments Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                              data-bs-auto-close="outside">Blog</a>
-                                            <ul class="dropdown-menu sub-menu shadow">
-                                                <li><a class="nav-link" href="blog.html">Blog</a></li>
-                                                <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="nav-link" href="affiliate.html">Affiliate</a></li>
-                                        <li><a class="nav-link" href="faqs.html">Faqs</a></li>
-                                        <li><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-                                        <li><a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-                                        <li><a class="nav-link" href="error.html">Error</a></li>
-                                    </ul>
-                                </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
+                                    balance: ₦{{request.user.balance}}
                                 </li>
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
-                                <a href="{% url 'logout' %}" type="button" class="login" >
+                                <a href="{% url 'logout' %}" type="button" class="login">
                                     Logout
                                 </a>
                             </div>
@@ -138,7 +106,7 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                                 </li>
                                 <li class="nav-item dropdown main-navbar">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
@@ -164,16 +132,17 @@
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
                                     <ul class="dropdown-menu main-menu shadow">
                                         <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                              data-bs-auto-close="outside">Tournaments</a>
+                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Tournaments</a>
                                             <ul class="dropdown-menu sub-menu shadow">
                                                 <li><a class="nav-link" href="tournaments.html">Tournaments</a></li>
-                                                <li><a class="nav-link" href="tournaments-details.html">Tournaments Details</a></li>
+                                                <li><a class="nav-link" href="tournaments-details.html">Tournaments
+                                                        Details</a></li>
                                             </ul>
                                         </li>
                                         <li class="dropend sub-navbar">
-                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                                              data-bs-auto-close="outside">Blog</a>
+                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Blog</a>
                                             <ul class="dropdown-menu sub-menu shadow">
                                                 <li><a class="nav-link" href="blog.html">Blog</a></li>
                                                 <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
@@ -192,10 +161,10 @@
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
                                 <div class="right-area header-action d-flex align-items-center max-un">
-                                    <a href="{% url 'login' %}" type="button" class="login" >
+                                    <a href="{% url 'login' %}" type="button" class="login">
                                         Login
                                     </a>
-                                    <a href="{% url 'register' %}" type="button" class="cmn-btn reg" >
+                                    <a href="{% url 'register' %}" type="button" class="cmn-btn reg">
                                         sign up
                                     </a>
                                 </div>
@@ -207,10 +176,10 @@
         </div>
         {% endif %}
     </header>
-    <!-- header-section end -->   
-{% block body %} 
+    <!-- header-section end -->
+    {% block body %}
 
-{% endblock %}
+    {% endblock %}
 
     <!-- Footer Area Start -->
     <footer class="footer-section">
@@ -235,7 +204,7 @@
                     <div class="col-12">
                         <div class="copyright">
                             <div class="copy-area">
-                                <p> Copyright © <a href="{% url 'home' %}">Bitbetio</a> | 
+                                <p> Copyright © <a href="{% url 'home' %}">Bitbetio</a> |
                                     <a href="https://themeforest.net/user/pixelaxis" class="auth">Pixelaxis</a>
                                 </p>
                             </div>
@@ -253,10 +222,11 @@
     </footer>
     <!-- Footer Area End -->
 
+
     <!--==================================================================-->
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
     <script src="{% static 'assets/js/fontawesome.js' %}"></script>
     <script src="{% static 'assets/js/plugin/slick.js' %}"></script>
     <script src="{% static 'assets/js/plugin/jquery.nice-select.min.js' %}"></script>

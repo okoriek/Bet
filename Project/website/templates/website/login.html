@@ -5,12 +5,13 @@
 <div class="container">
     <div class="loginbackground">
         <center>
-            <h3 >LOGIN</h3>
+            <h3>LOGIN</h3>
         </center>
         <div class="form-area">
             <form method="post">
                 {% if form.errors %}
-                <center><span class="error">Please enter a correct email and password. Note that both fields may be case-sensitive</span></center>
+                <center><span class="error">Please enter a correct email and password. Note that both fields may be
+                        case-sensitive</span></center>
                 {% endif %}
                 {% for message in messages %}
                 <center><span class="success">{{message}}</span></center>
@@ -25,12 +26,14 @@
                     <button class="cmn-btn w-100">Sign up</button>
                 </span>
             </form>
-            <center><span>Fogotten password <a href="{% url 'reset_password' %}" style="color: yellow; text-decoration: underline; ">here</a></span></center>
-            <center><span>Not a member yet? <a href="{% url 'register' %}" style="color: yellow; text-decoration: underline;">sign up</a></span></center>
+            <center><span>Fogotten password <a href="{% url 'reset_password' %}"
+                        style="color: yellow; text-decoration: underline; ">here</a></span></center>
+            <center><span>Not a member yet? <a href="{% url 'register' %}"
+                        style="color: yellow; text-decoration: underline;">sign up</a></span></center>
         </div>
     </div>
 </div>
 <script>
-
+    
 </script>
 {% endblock %}

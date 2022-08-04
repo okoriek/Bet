@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/custom.css' %}">
+<section class="dashboard-content pt-120">
+    <div class="overlay">
+        <div class="dashboard-heading">
+            <div class="container">
+                <div class="row justify-content-lg-end justify-content-between">
+                    <div class="col-xl-9 col-lg-12">
+                        <ul class="nav" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a href="{% url 'dashboard' %}"><button class="nav-link" id="deposit-tab"
+                                        type="button" aria-selected="false">Dashboard</button></a>
+                            </li>
+                            <li class="nav-item active" role="presentation">
+                                <button class="nav-link " id="dashboard-tab" data-bs-toggle="tab"
+                                    data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+                                    aria-selected="true">Deposit</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
+                                    data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
+                                    aria-selected="false">withdraw</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
+                                    data-bs-target="#affiliate" type="button" role="tab" aria-controls="affiliate"
+                                    aria-selected="false">affiliate</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="transactions-tab" data-bs-toggle="tab"
+                                    data-bs-target="#transactions" type="button" role="tab" aria-controls="transactions"
+                                    aria-selected="false">transactions</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting"
+                                    type="button" role="tab" aria-controls="setting"
+                                    aria-selected="false">settings</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="deposit-tab">
+                        <div class="row">
+                            <div class="col-xxl-12 col-xl-12">
+                                <div class="right-area">
+                                    <center>
+                                        <h5 class="mb-4">Deposit Funds(Paystack)</h5>
+                                    </center>
+                                    <div class="address-bar">
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            {{forms.as_p}}
+                                            <br>
+                                            <div class="qr-copy d-flex justify-content-end align-items-center mt-3">
+                                                <span class="btn-border w-20 mt-1">
+                                                    <button class="cmn-btn w-20" type="submit">Next</button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="bottom-area mb-3">
+                                        <div class="single-item">
+                                            <h6>Important :</h6>
+                                            <p>Cardholder name should match that on your account</p>
+                                            <p>All deposit will be credited imediately after confirmation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</html>
+{% endblock %}

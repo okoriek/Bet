@@ -1,8 +1,14 @@
-from time import time
+import datetime
+from datetime import time
+from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.crypto import get_random_string
 from django.utils import timezone
+from django.contrib.postgres.fields import ArrayField
+from . utils import RoundResult
+import random
+
 
 class MyUserManager(BaseUserManager):
     def create_user(self,email, first_name,last_name,username,password=None):
@@ -76,7 +82,7 @@ class User(AbstractBaseUser):
         return True
 class Result(models.Model):
     round = models.CharField(max_length=10000000)
-    outcome =  models.CharField(max_length=50, blank=True, null=True)
+    outcome =  models.CharField(max_length=50, blank=True)
     date_generated =  models.DateTimeField(default=timezone.now)
     
 
@@ -89,13 +95,37 @@ class Duration(models.Model):
     def __str__(self):
        return str(self.time)
 
+
+
 class NumberedValue(models.Model):
     option_value = models.IntegerField(verbose_name='number')
-    correct_value = models.BooleanField(default=False)
-    
 
     def __str__(self):
         return str(self.option_value)
+
+class GameRound(models.Model):
+    week =  models.IntegerField(blank=True, null=True)
+    result = ArrayField(models.CharField(max_length=2), blank=True, null=True)
+    time_generated = models.DateTimeField(default=timezone.now)
+    time_ending = models.DateTimeField(blank=True, null=True)
+    ended =  models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('time_generated',)
+
+    def __str__(self):
+        return str(self.week)
+
+
+    def save(self, *args, **kwargs):
+        self.time_ending = self.time_generated + timezone.timedelta(minutes=10)
+        if self.time_ending > timezone.now():
+            self.ended = False
+        else:
+            self.ended =  True
+        if self.ended == True:
+            self.result = [random.randrange(1,20,1)for i in range(8)]
+        super().save(*args, **kwargs)
 
 
 
@@ -105,17 +135,29 @@ class Game(models.Model):
         ('pending', 'PENDING'),
         ('loss', 'LOSS')
     )
+    week = models.ForeignKey(GameRound, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    result = models.ForeignKey(Result, on_delete=models.SET_NULL, blank=True, null=True )
+    generatedresult = ArrayField(models.CharField(max_length=2),blank=True, null=True)
     winning =  models.IntegerField(blank=True, null=True)
-    option = models.ManyToManyField(NumberedValue, blank=True  )
+    selectednumber =ArrayField(models.CharField(max_length= 10),blank=True, null=True)
     status = models.CharField(max_length=50, choices=STATUS, default='pending')
     date_created = models.DateTimeField(default=timezone.now)
 
 
     def __str__(self):
-        return self.user
+        return str(self.user)
+
+    def save(self, *args, **kwargs):
+        self.generatedresult = self.week.result
+        
+        super().save(*args, **kwargs)
+
+
     
 
+
+
+
+    
 
 
