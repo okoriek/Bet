@@ -1,0 +1,64 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/admin.css' %}">
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body"> 
+                <form method="get">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-5 col-xl-5">
+                            <span>Email: </span>
+                            {{users.form.email}}
+                        </div>
+                        <div class="col-xl-5 col-xl-5">
+                            <span>mobile no: </span>
+                            {{users.form.phone_number}}
+                        </div>
+                        <div class="col-xl-2 col-xl-2">
+                            <span class="btn-border w-80 mt-4">
+                                <button class="cmn-btn w-80 text-light btn btn-primary" id="search">Search</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <h4 class="card-title">User details</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Email </th>
+                                <th> First Name </th>
+                                <th> Last Name </th>
+                                <th> Username </th>
+                                <th> Verified</th>
+                                <th> Last login </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for users in user %}
+                            <tr>
+                                <td> {{users.email}} </td>
+                                <td> {{users.first_name}}</td>
+                                <td> {{users.last_name}}</td>
+                                <td> {{users.username}} </td>
+                                <td>
+                                    {% if users.is_active %}
+                                    <div class="badge badge-outline-success">Active</div>
+                                    {% else %}
+                                    <div class="badge badge-outline-danger">inactiv</div>
+                                    {% endif %}
+                                </td>
+                                <td> {{users.last_login}} </td>
+                            {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

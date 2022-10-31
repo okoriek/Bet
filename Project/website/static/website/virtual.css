@@ -1,0 +1,231 @@
+/* VIRTUAL FOOTBALL GAME SESSSION */
+.countdowntime{
+    float: right;
+ 
+    padding-right: 15px;
+}
+
+.homewin,.drawT, .awaywin,.over_two, .under_two, .over_three, .under_three, .over_four, .under_four, .home_away, .homedraw, .awaydraw, .bts, .nbts{
+    background: #6b21f7;
+    width: 50px;
+    padding-left: 10px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+@media only screen and (min-width:768px){
+    .homewin,.drawT, .awaywin,.over_two, .under_two, .over_three, .under_three, .over_four, .under_four, .home_away, .homedraw, .awaydraw, .bts, .nbts{
+        background: #6b21f7;
+        width: 50px;
+        padding-left: 10px;
+        margin-top: 7px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    
+}
+.homeaway{
+    margin-top: 7px;
+    margin-bottom: 10px;   
+}
+.bets{
+    margin-top: 16px;
+    margin-left: 0px;
+    background-color: whitesmoke;
+    height: auto;
+    width: 100%;
+    border-top-right-radius:10px;   
+}
+.fixtures{
+    font-weight: bolder;
+    font-size: small;
+}
+.gameodds{
+    font-weight: bolder;
+    font-size: small;
+}
+.option{
+    font-weight: bolder;
+    font-size: small;
+}
+.odds:hover{
+    cursor: pointer;
+}
+@media screen and (max-width:768px){
+    .bets{
+        display: none;
+        margin-top: 16px;
+        width: 94%;
+        margin-right: 20px;
+        background-color: whitesmoke;
+        height: auto;
+        position: fixed;
+        z-index: 3;
+        bottom: 5px;
+        border-top-right-radius:10px;
+    }
+    .content{
+        max-height: 200px;
+        overflow-y: scroll;
+        border-top-right-radius: 50px;
+    }
+    .containers{
+        border-top:2px solid rgb(56, 56, 56);
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        
+    }
+    .fixtures{
+        font-weight: bolder;
+        font-size: large;
+    }
+    .gameodds{
+        font-weight: bolder;
+        font-size: large;
+    }
+    .option{
+        font-weight: bolder;
+        font-size: large;
+    }
+    
+}
+@media only screen and (min-width:768px){
+    .containers{
+        border-top:2px solid rgb(56, 56, 56);
+        width: 100%;
+    }
+}
+.containers{
+    border-top:2px solid rgb(56, 56, 56);
+    width: 100%;
+    text-align: center;
+}
+
+.fixtures{
+    color: black;
+    padding-right: 10px;
+    font-weight: 200;
+    padding-top: 10px;
+    padding-bottom: 10px;   
+}
+.option{
+    color: black;
+    padding-right: 10px;
+    font-weight: 200;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
+.gameodds{
+    color: black;
+    padding-right: 10px;
+    font-weight: 200;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
+.total{
+    border-top: 5px solid #6b21f7;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    margin-top: 0;
+    margin-left: 0;
+    background-color: whitesmoke;
+    height: auto;
+    width: 100%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+}
+/* for laptops screen */
+.fld{
+    color: black;
+    font-weight: bold;
+    padding-left: 15px;
+
+}
+.fldinpright{
+    width: 150px;
+    height: 40px;
+}
+.total_odd{
+    color: black;
+    font-size: larger;
+    float: right;
+    padding-right: 20px;
+    align-items: center;
+}
+.total_amt{
+    color: black;
+    font-size: larger;
+    float: right;
+    padding-right: 20px;
+    align-items: center;
+}
+
+/* for smart phone screen */
+@media screen and (max-width:768px){
+    .fldinpright{
+        width: 150px;
+        height: 40px;
+        margin-left: 150px;
+       
+    }
+    .total_odd{
+        color: black;
+        font-size: larger;
+        float: right;
+        padding-right: 20px;
+        padding-top: 5px;
+        align-items: center;
+    }
+    .total_amt{
+        color: black;
+        font-size: larger;
+        float: right;
+        padding-right: 20px;
+        align-items: center;
+    }
+    
+}
+
+
+/* pop up model */
+.modalbtn{
+    background-color: #f72168;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 20px;
+    bottom: 230px;
+    font-size: larger;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+/* Result for virtual Games */
+.awayteam{
+    padding-left: 50px;
+    padding-top: 20px;
+}
+.hometeam{
+    padding-left: 30px;
+    padding-top: 20px;
+}
+.home_score{
+    padding-top: 20px;
+    background-color:  #6b21f7;
+}
+.away_score{
+    padding-top: 20px;
+    background-color:  #6b21f7;
+}
+.div{
+    padding-left: 5px;
+    font-weight: 500;
+}
+

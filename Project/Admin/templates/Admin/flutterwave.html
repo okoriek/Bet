@@ -1,0 +1,87 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/admin.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <form method="get">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-3 col-xl-3">
+                            <span>Email: </span>
+                            {{flutterwavefilter.form.email}}
+                        </div>
+                        <div class="col-xl-3 col-xl-3">
+                            <span>amount: </span>
+                            {{flutterwavefilter.form.amount}}
+                        </div>
+                        <div class="col-xl-3 col-xl-3">
+                            <span>Date: </span>
+                            {{flutterwavefilter.form.date}}
+                        </div>
+                        <div class="col-xl-3 col-xl-3 ">
+                            <span class="btn-border w-80 mt-4">
+                                <button class="cmn-btn w-80 text-light btn btn-primary" id="search">Search</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <h4 class="card-title">Deposit details</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Email </th>
+                                <th> Amount </th>
+                                <th> date </th>
+                                <th> Verified</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for flutterwaves in flutterwave %}
+                            <tr>
+                                <td> {{flutterwaves.email}} </td>
+                                <td> {{flutterwaves.amount}}</td>
+                                <td> {{flutterwaves.generated}}</td>
+                                <td>
+                                    {% if flutterwaves.verified %}
+                                    <div class="badge badge-outline-success">Successful</div>
+                                    {% else %}
+                                    <div class="badge badge-outline-danger">Failed</div>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+
+
+
+
+<script>
+    $("#id_date").datepicker({
+        changeYear: true,
+        changeMonth: true,
+        dateFormat: 'mm-dd-yy'
+    });
+    $("#id_email").on('click', function(){
+        $("#id_email").val('')
+    })
+    $("#id_date").on('click', function(){
+        $("#id_date").val('')
+    })
+    $("#id_amount").on('click', function(){
+        $("#id_amount").val('')
+    })
+</script>
+{% endblock %}

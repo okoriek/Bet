@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 import secrets
 from .paystack import PayStackPayment
-from  website.models import User
+from  website.models import Custom
 from flutterwave.models import FlutterWave
 
 
@@ -40,7 +40,7 @@ class Paystack(models.Model):
                 self.verified = True
             self.save()
         if self.verified:
-            user = User.objects.get(email = self.email)
+            user = Custom.objects.get(email = self.email)
             user.balance += int(self.amount)
             user.save()
             return True

@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/virtual.css' %}">
+<!-- Virtual Content Section start -->
+<section class="dashboard-content pt-120">
+    <div class="dashboard-heading" style="margin-bottom: 0px;">
+        <div class="container">
+            <div class="row justify-content-lg-end justify-content-between">
+                <div class="col-xl-9 col-lg-12">
+                    <ul class="nav" style="padding-left: 25%;" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link " id="live-tab" data-bs-toggle="tab" data-bs-target="#live"
+                                type="button" role="tab" aria-controls="live" aria-selected="true">Live</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="fixture-tab" data-bs-toggle="tab"
+                                data-bs-target="#fixture" type="button" role="tab" aria-controls="fixture"
+                                aria-selected="true">
+                                Fixtures</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="results-tab" data-bs-toggle="tab" data-bs-target="#results"
+                                type="button" role="tab" aria-controls="results" aria-selected="false">Results</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" style="margin-top: 0px;">
+        <!-- live matches display -->
+        <div class="tab-pane fade show" id="live" role="tabpanel" aria-labelledby="live-tab">
+            <div class="row">
+                <div class="col-4">
+                    <span class="hometeam">
+
+                    </span>
+                </div>
+                <div class="col-4">
+                    <center class="score">
+                        <span class="home_score">
+
+                        </span>
+                        <span class="away_score">
+
+                        </span>
+                    </center>
+                </div>
+                <div class="col-4">
+                    <span class="awayteam">
+
+                    </span>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show active" id="fixture" role="tabpanel" aria-labelledby="fixture-tab">
+            <div class="d-lg-none">
+                <div class="modalbtn"><i class="fa-regular fa-file-lines text-light"></i></div>
+            </div>
+            <div class="overlay">
+                <div class="dashboard-heading" style="background-color: #463b9f;">
+                    <div class="container">
+                        <div class="row justify-content-lg-end justify-content-between">
+                            <div class="col-xl-9 col-lg-12">
+                                <ul class="nav" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="dashboard-tab" data-bs-toggle="tab"
+                                            data-bs-target="#dashboard" type="button" role="tab"
+                                            aria-controls="dashboard" aria-selected="true">1X2</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="my-bets-tab" data-bs-toggle="tab"
+                                            data-bs-target="#my-bets" type="button" role="tab" aria-controls="my-bets"
+                                            aria-selected="false">
+                                            Double chance</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="deposit-tab" data-bs-toggle="tab"
+                                            data-bs-target="#deposit" type="button" role="tab" aria-controls="deposit"
+                                            aria-selected="false">GG/NG</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
+                                            data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
+                                            aria-selected="false">O/U 1.5</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="buy-crypto-tab" data-bs-toggle="tab"
+                                            data-bs-target="#buy-crypto" type="button" role="tab"
+                                            aria-controls="buy-crypto" aria-selected="false">O/U 2.5</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
+                                            data-bs-target="#affiliate" type="button" role="tab"
+                                            aria-controls="affiliate" aria-selected="false">O/U 3.5</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-3 d-none d-lg-block">
+                            <div class="ads">
+                                <div class="ads">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tab-content" style="margin: 0px;">
+                                <div><span style="color: yellow; padding-left: 15px;" class="gamewk"></span><span
+                                        style=" color: yellow;" class="countdowntime"></span></div>
+                                <hr>
+                                <!-- Home Draw Away control -->
+                                <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
+                                    aria-labelledby="dashboard-tab">
+                                    <table class="table text-light">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Teams</th>
+                                                <th style="padding-left: 30px;">1</th>
+                                                <th style="padding-left: 30px;">X</th>
+                                                <th style="padding-left: 30px;">2</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th class="teams"></th>
+                                                <td class="home"></td>
+                                                <td class="draw"></td>
+                                                <td class="away"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="my-bets" role="tabpanel" aria-labelledby="my-bets-tab">
+                                    <table class="table text-light">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Teams</th>
+                                                <th style="padding-left: 25px;">1X</th>
+                                                <th style="padding-left: 25px;">12</th>
+                                                <th style="padding-left: 25px;">X2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="teams"></th>
+                                                <td class="homeX"></td>
+                                                <td class="anybodywin"></td>
+                                                <td class="awayX"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit-tab">
+                                    <table class="table text-light">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Teams</th>
+                                                <th style="padding-left: 25px;"> GG</th>
+                                                <th style="padding-left: 25px;"> NG</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="teams"></th>
+                                                <td class="gg"></td>
+                                                <td class="ng"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Over 1.5 control -->
+                                <div class="tab-pane fade" id="withdraw" role="tabpanel" aria-labelledby="withdraw-tab">
+                                    <table class="table text-light">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Teams</th>
+                                                <th> Over1.5</th>
+                                                <th> Under1.5</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="teams"></th>
+                                                <td class="over2"></td>
+                                                <td class="under2"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Over 2.5 control -->
+                                <div class="tab-pane fade" id="buy-crypto" role="tabpanel"
+                                    aria-labelledby="buy-crypto-tab">
+                                    <table class="table text-light">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Teams</th>
+                                                <th> Over2.5</th>
+                                                <th> Under2.5</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="teams"></th>
+                                                <td class="over3"></td>
+                                                <td class="under3"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Over 3.5 control -->
+                                <div class="tab-pane fade" id="affiliate" role="tabpanel"
+                                    aria-labelledby="affiliate-tab">
+                                    <table class="table text-light">
+                                        <thead>
+                                            <tr>
+                                                <th>Teams</th>
+                                                <th> Over3.5</th>
+                                                <th> Under3.5</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th class="teams"></th>
+                                                <td class="over4"></td>
+                                                <td class="under4"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div class="bets">
+                                <div class="content">
+
+
+                                </div>
+                                <div class="total">
+                                    <span class="pt-2 fld">Amount: <input class="fldinpright" type="number"
+                                            value="100"></span>
+                                    <hr style=" border: 2px solid black;">
+                                    <div class="fld">Total odds: <span class="total_odd"> </span></div>
+                                    <hr style="border: 2px solid black;">
+                                    <div class="fld">Total Winnings: <span class="total_amt"> </span></div>
+                                    <hr style="border: 2px solid black;">
+                                    <span class="btn-border w-100 mb-2">
+                                        <button class="cmn-btn w-100" id="placebet">Place bet</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show" id="results" role=" tabpanel" aria-labelledby="results-tab">
+
+
+        </div>
+    </div>
+</section>
+<!--Virtual Game Content Section end -->
+<script src="{% static 'website/virtual.js' %}"></script>
+{% endblock %}

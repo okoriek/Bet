@@ -19,9 +19,8 @@
                                         type="button" aria-selected="false">deposit</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
-                                    data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
-                                    aria-selected="false">withdraw</button>
+                                <a href="{% url 'withdrawal' %}"><button class="nav-link" id="deposit-tab"
+                                        type="button" aria-selected="false">Withdraw</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
@@ -143,5 +142,5 @@
             </div>
         </div>
     </div>
-</html>
+</section>
 {% endblock %}

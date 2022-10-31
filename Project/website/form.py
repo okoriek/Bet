@@ -1,15 +1,14 @@
 from dataclasses import field
-import imp
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import Custom
 from paystack.models import Userhistory
 import django_filters
 
 
 class RegisterationForm(UserCreationForm):
     class Meta:
-        model = User
+        model = Custom
         fields = ('first_name', 'last_name','email','username', 'phone_number')
 
 class FileterForm(django_filters.FilterSet):

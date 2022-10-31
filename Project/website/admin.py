@@ -13,7 +13,7 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
-admin.site.register(User, AccountAdmin)
+admin.site.register(Custom, AccountAdmin)
 @admin.register(Game)
 class CustomGame(admin.ModelAdmin):
     list_display = ('week','user','generatedresult','selectednumber', 'winning', 'status')
@@ -25,4 +25,5 @@ admin.site.register(Result)
 admin.site.register(NumberedValue)
 admin.site.register(Duration)
 admin.site.register(GameRound)
+admin.site.register(WithdrawalPayment)
 

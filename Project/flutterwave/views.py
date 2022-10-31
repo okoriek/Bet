@@ -4,9 +4,9 @@ from .models import FlutterWave
 from .forms import PaymentForm
 from django.conf import settings
 from django.contrib import messages
-from website.models import User
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='/login')
 def Deposit(request):
     value = {
         'email': request.user
@@ -21,6 +21,7 @@ def Deposit(request):
     args = {'forms':payment_form}
     return render(request, 'flutterwave/payment.html', args)
 
+@login_required(login_url='/login')
 def confirm_payment(request, reference):
     payment = get_object_or_404(FlutterWave, reference = reference)
     verified = payment.confirm_payment()

@@ -2,7 +2,9 @@ from django.db import models
 from django.utils import timezone
 import secrets
 from django.conf import settings
+from  website.models import Custom
 from .flutterwave import FlutterWavePayment
+
 
 class FlutterWave(models.Model):
     amount = models.CharField(max_length=1000000)
@@ -33,7 +35,7 @@ class FlutterWave(models.Model):
                 self.verified = True
             self.save()
         if self.verified:
-            user = settings.AUTH_USER_MODEL.objects.get(email = self.email)
+            user = Custom.objects.get(email = self.email)
             user.balance += int(self.amount)
             user.save()
             return True

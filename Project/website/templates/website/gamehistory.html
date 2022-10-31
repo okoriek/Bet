@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" href="{% static 'website/custom.css' %}">
+<div class="container-fluid">
+    <div class="successimg">
+        <img src="{% static 'assets/images/success.gif' %}" alt="" id="successimg">
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-3 d-none d-lg-block ">
+            <img src="{% static 'assets\images\soccer-bets-bg.png' %}" height="200px" alt="unable to load image">
+        </div>
+
+        <div class="col-lg-6">
+            <div class="mb-3"><span class="px-2"><a href="{% url 'randomten' %}">Back</a></span></div>
+            <div class="row" id="history">
+                <div class="table-responsive">
+                    <table class="table text-light">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date/Time</th>
+                                <th scope="col">Week</th>
+                                <th scope="col">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for histories in history %}
+                            <tr>
+                                <th scope="row">{{histories.time_generated|date:'y-m-d'}} ({{histories.time_generated|time:'H:i'}})</th>
+                                <td>{{histories.week}}</td>
+                                <td>{{histories.result}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 d-none d-lg-block    ">
+            <img src="{% static 'assets\images\soccer-bets-bg.png' %}" height="200px" alt="unable to load image">
+        </div>
+
+    </div>
+</div>
+{% endblock%}

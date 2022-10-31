@@ -1,3 +1,17 @@
+@media only screen and (max-width:600px){
+    .customnav{
+        display: inline
+    }
+    
+}
+.register{
+    width: auto;
+    background-color:#6b21f7 ;
+    border-radius: 10px;
+    margin-left: 10px;
+    color: white;
+    border: 1px solid white;
+}
 .background{
     background-color: #120f54;
     height: auto;
@@ -66,21 +80,8 @@
     margin-left: auto;
     margin-right: auto;
 }
-/* for ipad phones*/
-@media only screen and (min-width:820px){
-    .gamebg{
-        
-        height: auto;
-        width: 23rem;
-        margin-top: auto;
-        border-radius: 20px;
-        margin-bottom: 40px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
 /* for ipad screen */
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .gamebg{
         background-color:  rgba(90, 15, 187, 0.603);
         height: auto;
@@ -97,12 +98,11 @@
     .gamebg{
         
         height: auto;
-        width: 20rem;
+        width: 19rem;
         margin-top: auto;
         border-radius: 20px;
         margin-bottom: 40px;
-        margin-left: auto;
-        margin-right: auto;
+       
     }
 }
 
@@ -174,6 +174,14 @@
     color: yellow;
     
 }
+.sphere {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: inset -5px -5px 10px black;
+     
+}
+
 .unclicked {
     display: inline-block;
     margin-top: 20px;
@@ -183,8 +191,10 @@
     margin-left: 7.5px;
     width: 50px;   
 }
+
+
 /* for ipad screen*/
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .unclicked {
         display: inline-block;
         margin-top: 20px;
@@ -201,16 +211,18 @@
         display: inline-block;
         margin-top: 20px;
         border-radius: 50%;
-        height: 50px;
+        height: 48px;
         padding-bottom: 20px;
         margin-left: 7.5px;
-        width: 50px;   
+        width: 48px; 
+          
     }
 }
 
 
 .text{
     margin-top: 10px;
+    font-size: large;
 }
 .balls{
     display: inline;    
@@ -230,12 +242,116 @@
     border-radius: 15px;
     padding-left: 5px;
 }
+.amt{
+    color: yellow;
+    margin-top: 20px;
+    
+}
+@media only screen and (min-width:768px){
+    .amt{
+        color: yellow;
+        margin-top: 20px;
+        
+    }   
+}
+/* for larger screen size */
+@media only screen and (min-width:768px){
+    #amount0{
+        width: 100%;
+        float:  right;
+        margin-right: 10px;
+        background: none;
+        border: 2px solid yellow;
+        color: yellow;
+        font-size: xx-large;
+    }
+    
+}
+#amount0{
+    width: 100%;
+    float:  right;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: none;
+    border: 2px solid yellow;
+    color: yellow;
+    font-size: xx-large;
+}
+/* for larger screen size */
+@media only screen and (min-width:768px){
+    #amount1{
+        width: 100%;
+        float:  right;
+        margin-right: 10px;
+        background: none;
+        border: 2px solid yellow;
+        color: yellow;
+        font-size: xx-large;
+    }
+    
+}
+#amount1{
+    width: 100%;
+    float:  right;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: none;
+    border: 2px solid yellow;
+    color: yellow;
+    font-size: xx-large;
+}
+/* for larger screen size */
+@media only screen and (min-width:768px){
+    #amount2{
+        width: 100%;
+        float:  right;
+        margin-right: 10px;
+        background: none;
+        border: 2px solid yellow;
+        color: yellow;
+        font-size: xx-large;
+    }
+    
+}
+#amount2{
+    width: 100%;
+    float:  right;
+    margin-right: 10px;
+    background: none;
+    margin-top: 10px;
+    border: 2px solid yellow;
+    color: yellow;
+    font-size: xx-large;
+}
+/* for larger screen size */
+@media only screen and (min-width:768px){
+    #amount3{
+        width: 100%;
+        float:  right;
+        margin-right: 10px;
+        background: none;
+        border: 2px solid yellow;
+        color: yellow;
+        font-size: xx-large;
+    }
+    
+}
+#amount3{
+    width: 100%;
+    float:  right;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: none;
+    border: 2px solid yellow;
+    color: yellow;
+    font-size: xx-large;
+}
 .clickcircle{
     background-color: yellow;
     border: 2px solid white;
 }
 /* for ipad screen*/
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .picks{
         border: 2px solid yellow;
         width: 98%;
@@ -261,7 +377,7 @@
 }
 .clicked0{
     display: inline-block;
-    background: black;
+    background: whitesmoke;
     margin-top:5px;
     margin-bottom: 15px;
     border-radius: 50%;
@@ -274,14 +390,15 @@
     padding-top: 15px;
     font-size: x-large;
     font-weight: bold;
-    background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+    box-shadow: inset -5px -5px 10px black;
+    
 
 }
 /* for ipad screen*/
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .clicked0{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
@@ -294,7 +411,7 @@
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
@@ -302,27 +419,27 @@
 @media only screen and (min-width:992px){
     .clicked0{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
-        height: 50px;
+        height: 48px;
         padding-bottom: 10px;
         margin-right: 5px;
-        width: 50px;
+        width: 48px;
         color: #000;
         text-align: center;
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
 
 .clicked1{
     display: inline-block;
-    background: black;
+    background: whitesmoke;
     margin-top:5px;
     margin-bottom: 15px;
     border-radius: 50%;
@@ -335,14 +452,14 @@
     padding-top: 15px;
     font-size: x-large;
     font-weight: bold;
-    background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+    box-shadow: inset -5px -5px 10px black;
 
 }
 /* for ipad screen*/
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .clicked1{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
@@ -355,7 +472,7 @@
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
@@ -363,26 +480,26 @@
 @media only screen and (min-width:992px){
     .clicked1{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
-        height: 50px;
+        height: 48px;
         padding-bottom: 10px;
         margin-right: 5px;
-        width: 50px;
+        width: 48px;
         color: #000;
         text-align: center;
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
 .clicked2{
     display: inline-block;
-    background: black;
+    background: whitesmoke;
     margin-top:5px;
     margin-bottom: 15px;
     border-radius: 50%;
@@ -395,14 +512,14 @@
     padding-top: 15px;
     font-size: x-large;
     font-weight: bold;
-    background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+    box-shadow: inset -5px -5px 10px black;
 
 }
 /* for ipad screen*/
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .clicked2{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
@@ -415,7 +532,7 @@
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
@@ -423,26 +540,26 @@
 @media only screen and (min-width:992px){
     .clicked2{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
-        height: 50px;
+        height: 48px;
         padding-bottom: 10px;
         margin-right: 5px;
-        width: 50px;
+        width: 48px;
         color: #000;
         text-align: center;
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
 .clicked3{
     display: inline-block;
-    background: black;
+    background: whitesmoke;
     margin-top:5px;
     margin-bottom: 15px;
     border-radius: 50%;
@@ -455,14 +572,14 @@
     padding-top: 15px;
     font-size: x-large;
     font-weight: bold;
-    background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+    box-shadow: inset -5px -5px 10px black;
 
 }
 /* for ipad screen*/
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     .clicked3{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
@@ -475,7 +592,7 @@
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
@@ -483,20 +600,20 @@
 @media only screen and (min-width:992px){
     .clicked3{
         display: inline-block;
-        background: black;
+        background: whitesmoke;
         margin-top:5px;
         margin-bottom: 15px;
         border-radius: 50%;
-        height: 50px;
+        height: 48px;
         padding-bottom: 10px;
         margin-right: 5px;
-        width: 50px;
+        width: 48px;
         color: #000;
         text-align: center;
         padding-top: 15px;
         font-size: x-large;
         font-weight: bold;
-        background: radial-gradient(circle at 100px 100px, #616161, rgb(255, 255, 255));
+        box-shadow: inset -5px -5px 10px black;
     
     }
 }
@@ -514,7 +631,7 @@
     position: relative;
     margin-top: calc(100% - 30%);
     margin-bottom: calc(100% - 30%);
-    margin-left: 20px;
+    margin-left: 16px;
     border-radius: 20px;
 }
 /* for large screen */
@@ -536,7 +653,7 @@
     }
 }
 /* for ipad devices */
-@media only screen and (min-width:820px){
+@media only screen and (min-width:768px){
     #successimg{
         display: none;
         align-self: center;
@@ -553,6 +670,45 @@
         border: none; 
     }
 }
+.bal{
+    font-size: large;
+    
+}
+/* Result handling */
+#result{
+    background-color: black; 
+    height: 70px;
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+.result{
+    display: inline-block;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: x-large;
+    padding-top: 15px;
+    text-align: center;
+    margin-left: 10px;
+
+}
+.wk{
+    margin-top: 20px;
+    padding-left: 10px;
+    color: yellow;
+    font-size: xx-large;
+}
+.span2{
+    float: right;
+    padding-right: 40px;
+    
+}
+.span1{
+    padding-left: 40px;
+}
+
+
 
 .transaction-content{
     background-color: #322a71;
@@ -573,6 +729,20 @@
 .transaction-content li{
     float: left;
 }
+
+hr{
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(235, 230, 230, 0.986);
+}
+
+/** Spin wheel css **/
+
+
+
+
+
+
 
 
 

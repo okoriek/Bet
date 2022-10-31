@@ -1,0 +1,43 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block body %}
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Game Round</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Week </th>
+                                <th> Result </th>
+                                <th> Started </th>
+                                <th> Ended</th>
+                                <th> Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gamerounds in gameround %}
+                            <tr>
+                                <td> {{gamerounds.week}} </td>
+                                <td> {{gamerounds.result}}</td>
+                                <td> {{gamerounds.time_generated}}</td>
+                                <td> {{gamerounds.time_ending}}</td>
+                                <td>
+                                    {% if gamerounds.ended %}
+                                    <div class="badge badge-outline-success">Completed</div>
+                                    {% else %}
+                                    <div class="badge badge-outline-danger">In progress</div>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

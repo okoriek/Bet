@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-from telnetlib import LOGOUT
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,10 +47,17 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'paystack.apps.PaystackConfig',
     'flutterwave.apps.FlutterwaveConfig',
+    'Admin.apps.AdminConfig',
+    'virtual.apps.VirtualConfig',
 
     #external installed app
+
+    'rest_framework',
     'django_filters',
+    'django_celery_beat',
+    #'storages',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,7 +71,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Project.urls'
 
-AUTH_USER_MODEL = 'website.User'
+AUTH_USER_MODEL = 'website.Custom'
 
 TEMPLATES = [
     {
@@ -155,8 +161,27 @@ EMAIL_HOST = 'localhost'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'okoriek55@gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = '' 
+EMAIL_HOST_PASSWORD = ''
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+
+
+LOGIN_REDIRECT_URL = 'loginsuccess'
+LOGOUT_REDIRECT_URL = 'logoutsuccess'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+#S3 BUCKETS CONFIG
+
+
+#AWS_ACCESS_KEY_ID = 'AKIA2OYYUX6SIGE2TEFP'
+#AWS_SECRET_ACCESS_KEY = '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'
+#AWS_STORAGE_BUCKET_NAME = 'kwex'
+#AWS_S3_FILE_OVERWRITE = False
+#AWS_DEFAULT_ACL = None
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+
+
+
+

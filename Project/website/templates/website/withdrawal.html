@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'website/custom.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/select.css' %}">
+<section class="dashboard-content pt-120">
+    <div class="overlay">
+        <div class="dashboard-heading">
+            <div class="container">
+                <div class="row justify-content-lg-end justify-content-between">
+                    <div class="col-xl-9 col-lg-12">
+                        <ul class="nav" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a href="{% url 'dashboard' %}"><button class="nav-link" id="deposit-tab" type="button"
+                                        aria-selected="false">Dashboard</button></a>
+                            </li>
+                            <li class="nav-item active" role="presentation">
+                                <button class="nav-link " id="dashboard-tab" data-bs-toggle="tab"
+                                    data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
+                                    aria-selected="true">Deposit</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
+                                    data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
+                                    aria-selected="false">withdraw</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
+                                    data-bs-target="#affiliate" type="button" role="tab" aria-controls="affiliate"
+                                    aria-selected="false">affiliate</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="transactions-tab" data-bs-toggle="tab"
+                                    data-bs-target="#transactions" type="button" role="tab" aria-controls="transactions"
+                                    aria-selected="false">transactions</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting"
+                                    type="button" role="tab" aria-controls="setting"
+                                    aria-selected="false">settings</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="deposit-tab">
+                        <div class="row">
+                            <div class="col-xxl-12 col-xl-12">
+                                <div class="right-area">
+                                    <center>
+                                        <h5 class="mb-4">Withdraw Funds</h5>
+                                    </center>
+                                    <div class="address-bar">
+                                        <input type="number" id="amount" placeholder="Amount" name="amount">
+                                        <br>
+                                        <br>
+                                        <input type="number" id="account" placeholder="Account number" name="account">
+                                        <br>
+                                        <br>
+                                    </div>
+
+                                    <div class="select-box col-12">
+                                        <div class="options-container">
+                                            {% for name,code in ziplist %}
+                                            <div class="options">
+                                                <option value="{{code}}">{{name}}</option>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+
+                                        <input class="selected" placeholder="Select bank" value="" readonly>
+                                        <input class="code" placeholder="Bank code" value="" hidden name="bank_code">
+                                        
+
+                                    </div>
+                                    <br>
+                                    <button type="button" class="btn btn-success" id="process">Confirm</button>
+
+                                    <br>
+                                    <br>
+                                    <div class="bottom-area mb-3">
+                                        <div class="single-item">
+                                            <h6>Important :</h6>
+                                            <p>Cardholder name should match that on your account</p>
+                                            <p>All withdrawal will be proccessed imediately after confirmation(30mins)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/select.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#process').on('click', function () {
+            $.ajax({
+                type: 'post',
+                url: '/confirmbankname/',
+                data: {
+                    amount: $('#amount').val(),
+                    accounts: $('#account').val(),
+                    bank_code: $('.code').val(),
+                    bank_name: $('.selected').val()
+                },
+                success: function () {
+                    console.log('data processing')
+                    window.location.href = 'http://127.0.0.1:8000/confirmdetails/'
+                }
+            })
+        })
+    })
+</script>
+{% endblock %}
