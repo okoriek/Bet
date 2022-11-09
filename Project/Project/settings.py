@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'paystack.apps.PaystackConfig',
     'flutterwave.apps.FlutterwaveConfig',
     'Admin.apps.AdminConfig',
-    'virtual.apps.VirtualConfig',
+    
 
     #external installed app
 

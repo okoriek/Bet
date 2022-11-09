@@ -26,5 +26,4 @@ urlpatterns = [
     path('deposit/', include('paystack.urls', namespace='paystack')),
     path('staff/', include('Admin.urls', namespace='staff')),
     path('api/', include('api.urls')),
-    path('virtual/', include('virtual.urls', namespace='virtual')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

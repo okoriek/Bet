@@ -680,25 +680,87 @@
     height: 70px;
     width: 100%;
     margin-bottom: 20px;
+    justify-content: center;
+    justify-items: center;
     
 }
 .result{
     display: inline-block;
     border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    font-size: x-large;
-    padding-top: 15px;
+    height: 32px;
+    width: 32px;
+    font-size: small;
+    padding-top: 5px;
     text-align: center;
-    margin-left: 10px;
+    margin-left: 5px;
 
 }
 .wk{
     margin-top: 20px;
-    padding-left: 10px;
     color: yellow;
-    font-size: xx-large;
+    font-size: x-large;
 }
+
+/* for ipad screen screen above */
+@media only screen and (min-width:768px){
+    #result{
+        background-color: black; 
+        height: 70px;
+        width: 100%;
+        margin-bottom: 20px;
+        justify-content: center;
+        justify-items: center;
+        padding-left: calc(100% - 80%);
+        
+    }
+    .result{
+        display: inline-block;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        font-size: large;
+        padding-top: 8px;
+        text-align: center;
+        margin-left: 15px;
+    
+    }
+    .wk{
+        margin-top: 20px;
+        color: yellow;
+        font-size: x-large;
+    }
+}
+
+/* for laptop screen above */
+@media only screen and (min-width:992px){
+    #result{
+        background-color: black; 
+        height: 70px;
+        width: 100%;
+        margin-bottom: 20px;
+        justify-content: center;
+        justify-items: center;
+        padding-left: calc(100% - 70%);
+        
+    }
+    .result{
+        display: inline-block;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+        font-size: large;
+        padding-top: 8px;
+        text-align: center;
+        margin-left: 15px;
+    
+    }
+    .wk{
+        margin-top: 20px;
+        color: yellow;
+        font-size: x-large;
+    }
+}
+
 .span2{
     float: right;
     padding-right: 40px;

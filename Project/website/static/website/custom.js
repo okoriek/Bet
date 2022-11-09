@@ -147,28 +147,33 @@ $(document).ready(function () {
                                     var bal = parseInt($('.bal').text())
 
                                     if (bal > inp_amount) {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "/datasubmit/",
-                                            data: {
-                                                list,
-                                                week: wk,
-                                                amount: $('#amount0').val()
-                                            },
-                                            success: function (response) {
-                                                $('#amount0').val('')
-                                                $(".successimg").css('display', 'flex')
-                                                $("#successimg").css('display', 'flex')
-                                                setTimeout(() => {
-                                                    $(".successimg").css('display', 'none')
-                                                    $("#successimg").css('display', 'none')
-                                                }, 1600);
-                                            },
-                                            error: function (error) {
-                                                console.log(error)
-                                            }
-                                        })
+                                        if (inp_amount >= 100){
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/datasubmit/",
+                                                data: {
+                                                    list,
+                                                    week: wk,
+                                                    amount: $('#amount0').val()
+                                                },
+                                                success: function (response) {
+                                                    $('#amount0').val('')
+                                                    $(".successimg").css('display', 'flex')
+                                                    $("#successimg").css('display', 'flex')
+                                                    setTimeout(() => {
+                                                        $(".successimg").css('display', 'none')
+                                                        $("#successimg").css('display', 'none')
+                                                    }, 1600);
+                                                },
+                                                error: function (error) {
+                                                    console.log(error)
+                                                }
+                                            })
 
+                                        }
+                                        else{
+                                            swal("Minimum stake is ₦100"); 
+                                        }
                                     }
                                     else {
                                         swal("insufficient balance");
@@ -269,33 +274,37 @@ $(document).ready(function () {
                                         $(this).remove()
                                         count = 0
                                     })
-
                                     var inp_amount = parseInt($('#amount1').val())
                                     var bal = parseInt($('.bal').text())
 
                                     if (bal > inp_amount) {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "/datasubmit/",
-                                            data: {
-                                                list,
-                                                week: wk,
-                                                amount: $('#amount1').val()
-                                            },
-                                            success: function (response) {
-                                                $('#amount1').val('')
-                                                $(".successimg").css('display', 'flex')
-                                                $("#successimg").css('display', 'flex')
-                                                setTimeout(() => {
-                                                    $(".successimg").css('display', 'none')
-                                                    $("#successimg").css('display', 'none')
-                                                }, 1600);
-                                            },
-                                            error: function (error) {
-                                                console.log(error)
-                                            }
-                                        })
+                                        if (inp_amount >= 100){
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/datasubmit/",
+                                                data: {
+                                                    list,
+                                                    week: wk,
+                                                    amount: $('#amount1').val()
+                                                },
+                                                success: function (response) {
+                                                    $('#amount0').val('')
+                                                    $(".successimg").css('display', 'flex')
+                                                    $("#successimg").css('display', 'flex')
+                                                    setTimeout(() => {
+                                                        $(".successimg").css('display', 'none')
+                                                        $("#successimg").css('display', 'none')
+                                                    }, 1600);
+                                                },
+                                                error: function (error) {
+                                                    console.log(error)
+                                                }
+                                            })
 
+                                        }
+                                        else{
+                                            swal("Minimum stake is ₦100"); 
+                                        }
                                     }
                                     else {
                                         swal("insufficient balance");
@@ -398,33 +407,37 @@ $(document).ready(function () {
                                         $(this).remove()
                                         count = 0
                                     })
-
                                     var inp_amount = parseInt($('#amount2').val())
                                     var bal = parseInt($('.bal').text())
 
                                     if (bal > inp_amount) {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "/datasubmit/",
-                                            data: {
-                                                list,
-                                                week: wk,
-                                                amount: $('#amount2').val()
-                                            },
-                                            success: function (response) {
-                                                $('#amount2').val('')
-                                                $(".successimg").css('display', 'flex')
-                                                $("#successimg").css('display', 'flex')
-                                                setTimeout(() => {
-                                                    $(".successimg").css('display', 'none')
-                                                    $("#successimg").css('display', 'none')
-                                                }, 1600);
-                                            },
-                                            error: function (error) {
-                                                console.log(error)
-                                            }
-                                        })
+                                        if (inp_amount >= 100){
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/datasubmit/",
+                                                data: {
+                                                    list,
+                                                    week: wk,
+                                                    amount: $('#amount2').val()
+                                                },
+                                                success: function (response) {
+                                                    $('#amount0').val('')
+                                                    $(".successimg").css('display', 'flex')
+                                                    $("#successimg").css('display', 'flex')
+                                                    setTimeout(() => {
+                                                        $(".successimg").css('display', 'none')
+                                                        $("#successimg").css('display', 'none')
+                                                    }, 1600);
+                                                },
+                                                error: function (error) {
+                                                    console.log(error)
+                                                }
+                                            })
 
+                                        }
+                                        else{
+                                            swal("Minimum stake is ₦100"); 
+                                        }
                                     }
                                     else {
                                         swal("insufficient balance");
@@ -528,33 +541,37 @@ $(document).ready(function () {
                                         $(this).remove()
                                         count = 0
                                     })
-
                                     var inp_amount = parseInt($('#amount3').val())
                                     var bal = parseInt($('.bal').text())
 
                                     if (bal > inp_amount) {
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "/datasubmit/",
-                                            data: {
-                                                list,
-                                                week: wk,
-                                                amount: $('#amount3').val()
-                                            },
-                                            success: function (response) {
-                                                $('#amount3').val('')
-                                                $(".successimg").css('display', 'flex')
-                                                $("#successimg").css('display', 'flex')
-                                                setTimeout(() => {
-                                                    $(".successimg").css('display', 'none')
-                                                    $("#successimg").css('display', 'none')
-                                                }, 1600);
-                                            },
-                                            error: function (error) {
-                                                console.log(error)
-                                            }
-                                        })
+                                        if (inp_amount >= 100){
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/datasubmit/",
+                                                data: {
+                                                    list,
+                                                    week: wk,
+                                                    amount: $('#amount3').val()
+                                                },
+                                                success: function (response) {
+                                                    $('#amount0').val('')
+                                                    $(".successimg").css('display', 'flex')
+                                                    $("#successimg").css('display', 'flex')
+                                                    setTimeout(() => {
+                                                        $(".successimg").css('display', 'none')
+                                                        $("#successimg").css('display', 'none')
+                                                    }, 1600);
+                                                },
+                                                error: function (error) {
+                                                    console.log(error)
+                                                }
+                                            })
 
+                                        }
+                                        else{
+                                            swal("Minimum stake is ₦100"); 
+                                        }
                                     }
                                     else {
                                         swal("insufficient balance");
