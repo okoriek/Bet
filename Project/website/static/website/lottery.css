@@ -1,77 +1,6 @@
-@media only screen and (max-width:600px){
-    .customnav{
-        display: inline
-    }
-    
-}
-.register{
-    width: auto;
-    background-color:#6b21f7 ;
-    border-radius: 10px;
-    margin-left: 10px;
-    color: white;
-    border: 1px solid white;
-}
-.background{
-    background-color: #120f54;
-    height: auto;
-    margin-top: 100px;
-    margin-bottom: 30px;
-    padding: 30px;
-    border: 2px rgb(10, 10, 73);
-    border-radius: 10px;
-    -moz-box-shadow: 0 0 15px #371255;
-    -webkit-box-shadow: 0 0 15px #371255;
-    box-shadow: 0 0 15px #371255;
-}
-.loginbackground{
-    background-color: #120f54;
-    height: auto;
-    margin-top: 100px;
-    margin-bottom: 30px;
-    padding: 30px;
-    border: 2px rgb(10, 10, 73);
-    border-radius: 10px;
-    -moz-box-shadow: 0 0 15px #371255;
-    -webkit-box-shadow: 0 0 15px #371255;
-    box-shadow: 0 0 15px #371255;
-}
-
-@media only screen and (min-width:992px){
-    .loginbackground{
-        background-color: #120f54;
-        height: auto;
-        margin-top: 100px;
-        margin-left: 25%;
-        margin-right: 25%;
-        margin-bottom: 30px;
-        padding: 30px;
-        border: 2px rgb(10, 10, 73);
-        border-radius: 10px;
-        -moz-box-shadow: 0 0 15px #371255;
-        -webkit-box-shadow: 0 0 15px #371255;
-        box-shadow: 0 0 15px #371255;
-    }
-}
-.error{
-    background-color: rgb(248, 107, 107);
-    border: solid 2px red;
-    width: 100%;
-    border-radius: 10px;
-    color: red;
-    margin-bottom: 10px;
-}
-.success{
-    background-color: rgb(62, 243, 62);
-    border: solid 2px green;
-    width: 100%;
-    border-radius: 10px;
-    color: green;
-}
-/*game css */
 
 .gamebg{
-    background-color:  rgba(90, 15, 187, 0.603);
+    background-color:  black;
     height: auto;
     width: 20rem;
     margin-top: auto;
@@ -83,7 +12,7 @@
 /* for ipad screen */
 @media only screen and (min-width:768px){
     .gamebg{
-        background-color:  rgba(90, 15, 187, 0.603);
+        background-color:  black;
         height: auto;
         width: 23rem;
         margin-top: auto;
@@ -92,11 +21,23 @@
         margin-left: auto;
         margin-right: auto;
     }
+    #gamebgheaderlot{
+        font-size: xx-large;
+        float: right;
+        color: yellow;
+        margin-right: 10px;
+    }
+    .gamebgheaderlot{
+        font-size: xx-large;
+        float: left;
+        color: yellow;
+        margin-left: 10px;
+    }
 }
 /* for laptop screen*/
 @media only screen and (min-width:992px){
     .gamebg{
-        
+        background-color:  black;
         height: auto;
         width: 19rem;
         margin-top: auto;
@@ -104,10 +45,22 @@
         margin-bottom: 40px;
        
     }
+    #gamebgheaderlot{
+        font-size: xx-large;
+        float: right;
+        color: yellow;
+        margin-right: 10px;
+    }
+    .gamebgheaderlot{
+        font-size: xx-large;
+        float: left;
+        color: yellow;
+        margin-left: 10px;
+    }
 }
 
 .gamebgheader{
-    background-color:rgba(46, 6, 97, 0.603) ;
+    background-color:rgb(95, 9, 231) ;
     margin-left: 0px;
     color: yellow;
     text-align: center;
@@ -115,55 +68,18 @@
     height: 70px;
     width: 100%;
     padding-top: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 /* first gameheader */
-#gamebgheader0{
-    font-size: xx-large;
+#gamebgheaderlot{
+    font-size: x-large;
     float: right;
     color: yellow;
     margin-right: 10px;
 }
-.gamebgheader0{
-    font-size: xx-large;
-    float: left;
-    color: yellow;
-    margin-left: 10px;
-}
-/* second gameheader */
-#gamebgheader1{
-    font-size: xx-large;
-    float: right;
-    color: yellow;
-    margin-right: 10px;
-}
-.gamebgheader1{
-    font-size: xx-large;
-    float: left;
-    color: yellow;
-    margin-left: 10px;
-}
-/* third gameheader */
-#gamebgheader2{
-    font-size: xx-large;
-    float: right;
-    color: yellow;
-    margin-right: 10px;
-}
-.gamebgheader2{
-    font-size: xx-large;
-    float: left;
-    color: yellow;
-    margin-left: 10px;
-}
-/* fourth gameheader */
-#gamebgheader3{
-    font-size: xx-large;
-    float: right;
-    color: yellow;
-    margin-right: 10px;
-}
-.gamebgheader3{
-    font-size: xx-large;
+.gamebgheaderlot{
+    font-size: x-large;
     float: left;
     color: yellow;
     margin-left: 10px;
@@ -682,7 +598,6 @@
     margin-bottom: 20px;
     justify-content: center;
     justify-items: center;
-    
     
 }
 .result{

@@ -119,6 +119,12 @@ def FilterHistory(request):
     history = filter.qs
     args = {'filter': filter, 'history':history}
     return render(request , 'website/transaction.html', args)
+
+def GetBalance(request):
+    user =  request.user
+    profile =  Custom.objects.get(email = user)
+    bal = profile.balance
+    return JsonResponse({'balance': bal})
     
 
 def RandomTen(request):
@@ -169,6 +175,8 @@ def RecieveNumbers(request):
 def Payment(request):
     
     return render(request, 'website/deposit.html')
+
+
 @csrf_exempt
 def CreateNewRound(request):
     current_week = request.POST['week']
@@ -250,6 +258,71 @@ def InitiatePay(request):
     status = recipient_code['status']
     transfer = WithdrawalPayment.objects.filter(id = detail['id']).update(reference = reference, status=status )
     return redirect('/')
+
+
+# Views for lottery includes result generating e.t.c 
+@login_required(login_url='/login')
+def Lottery(request):
+    return render(request, 'website/lottery.html')
+
+def GetLotteryNumber(request):
+    number =  NumberedValue.objects.all()
+    round = LotteryRound.objects.filter(ended=False)[:1]
+    time = []
+    data = []
+    for i in round:
+        item={
+            'week':i.week,
+            'created': i.time_generated,
+            'expire': i.time_ending
+
+        }
+        time.append(item)
+    for obj in number:
+        item= {
+            'value': obj.option_value
+        }
+        data.append(item)
+    return JsonResponse({'data': data, 'time':time})
+
+@csrf_exempt
+def LotteryRecieveNumbers(request):
+    email =  request.user
+    selectednum = request.POST.getlist('list[]')
+    wk =  request.POST['week']
+    amount = 500
+    gaming =  LotteryRound.objects.get(week=int(wk))
+    if request.POST:
+        new = Ticket.objects.create(user = email, selectednumber=selectednum, week=gaming, amount=amount)
+        new.save()
+        user = Custom.objects.get(email = email)
+        user.balance -= amount
+        user.save()
+    return HttpResponse('submitted successfully')
+
+@csrf_exempt
+def LotteryVerify(request):
+    current_week = request.POST['week']
+    updates = LotteryRound.objects.get(week = int(current_week))
+    updates.save()
+    gaming =  Ticket.objects.filter(week = updates)
+    for val in gaming:
+        val.save()
+    return JsonResponse({'result':current_week})
+
+def LotteryResult(request):
+    try:
+        resultgenerated =  LotteryRound.objects.filter(ended=True).order_by('-time_generated')[:1]
+        data = []
+        for i in resultgenerated:
+            item = {
+                'week': i.week,
+                'result': i.result
+            }
+            data.append(item)
+        return JsonResponse({'data': data})
+    except:
+        pass
 
 
 

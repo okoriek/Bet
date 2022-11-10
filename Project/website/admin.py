@@ -23,7 +23,8 @@ class CustomGame(admin.ModelAdmin):
 
 admin.site.register(Result)
 admin.site.register(NumberedValue)
-admin.site.register(Duration)
 admin.site.register(GameRound)
+admin.site.register(Ticket)
+admin.site.register(LotteryRound)
 admin.site.register(WithdrawalPayment)
 

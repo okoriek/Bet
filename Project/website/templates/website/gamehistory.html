@@ -22,17 +22,17 @@
                     <table class="table text-light">
                         <thead>
                             <tr>
-                                <th scope="col">Date/Time</th>
                                 <th scope="col">Week</th>
                                 <th scope="col">Result</th>
+                                <th scope="col">Date/Time</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for histories in history %}
                             <tr>
-                                <th scope="row">{{histories.time_generated|date:'y-m-d'}} ({{histories.time_generated|time:'H:i'}})</th>
                                 <td>{{histories.week}}</td>
                                 <td>{{histories.result}}</td>
+                                <th scope="row">{{histories.time_generated|date:'y-m-d'}} ({{histories.time_generated|time:'H:i'}})</th>
                             </tr>
                             {% endfor %}
                         </tbody>

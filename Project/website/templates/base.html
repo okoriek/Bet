@@ -75,13 +75,9 @@
                                         data-bs-auto-close="outside"><span>Games</i></a></span>
                                     <ul class="dropdown-menu main-menu shadow">
                                         <a class="nav-link active text-light " aria-current="page"
-                                            href="#"><i
-                                                class="fa-regular fa-futbol"></i> Virual
-                                            Football</a>
-                                        <a class="nav-link active text-light " aria-current="page"
                                             href="{% url 'randomten' %}"><i class="fas fa-bowling-ball"></i> Ball 8</a>
                                         <a class="nav-link active text-light " aria-current="page" href=""><i
-                                                class="fas fa-dharmachakra"></i> Spin&win</a>
+                                                class="fas fa-dharmachakra"></i> Spin&win <i class="fa-solid fa-lock"></i></a>
                                         <a class="nav-link active text-light " aria-current="page"
                                             href="#"><i class="fas fa-bowling-ball"></i> Lottery</a>
                                     </ul>
@@ -115,17 +111,13 @@
                                 </span>
                                 <span class="nav-item">
                                     <a class="nav-link active text-light d-lg-none" aria-current="page"
-                                        href="#"><i class="fa-solid fa-briefcase"></i>
+                                        href="{% url 'lottery' %}"><i class="fa-solid fa-briefcase"></i>
                                         Lottery</a>
                                 </span>
+                                
                                 <span class="nav-item">
-                                    <a class="nav-link active text-light d-lg-none" aria-current="page"
-                                        href="#"><i class="fa-regular fa-futbol"></i>
-                                        Virtual football</a>
-                                </span>
-                                <span class="nav-item">
-                                    <a class="nav-link active text-light d-lg-none" aria-current="page" href=""><i
-                                            class="fa-solid fa-dharmachakra"></i> Spinwin</a>
+                                    <a class="nav-link active text-light d-lg-none" aria-current="page" href="#"><i
+                                            class="fa-solid fa-dharmachakra"></i> Spinwin <i class="fa-solid fa-lock"></i></a>
                                 </span>
                                 <span class="nav-item">
                                     <a class="nav-link active text-light " aria-current="page" href=""><i
@@ -164,10 +156,12 @@
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside">Games</a>
                                     <ul class="dropdown-menu main-menu shadow">
-                                        <a class="nav-link active text-light " aria-current="page" href=""><i
+                                        <a class="nav-link active text-light " aria-current="page" href="{url 'randomten'}"><i
                                                 class="fas fa-bowling-ball"></i> Ball 8</a>
+                                        <a class="nav-link active text-light " aria-current="page" href="{url 'lottery'}"><i
+                                            class="fas fa-bowling-ball"></i> Lottery</a>
                                         <a class="nav-link active text-light " aria-current="page" href=""><i
-                                                class="fas fa-dharmachakra"></i> Spin&win</a>
+                                                class="fas fa-dharmachakra"></i> Spin&win <i class="fa-solid fa-lock"></i></a>
                                         <a class="nav-link active text-light " aria-current="page" href=""><i
                                                 class="fas fa-info-circle"></i> Help</a>
                                     </ul>
@@ -183,7 +177,7 @@
                                 </span>
                                 <span class="nav-item">
                                     <a class="nav-link active text-light d-lg-none" aria-current="page" href=""><i
-                                            class="fas fa-dharmachakra"></i> Spin&win</a>
+                                            class="fas fa-dharmachakra"></i> Spin&win <i class="fa-solid fa-lock"></i></a>
                                 </span>
                                 <span class="nav-item">
                                     <a class="nav-link active text-light " aria-current="page" href=""><i

@@ -49,9 +49,6 @@ $(document).ready(function () {
                     amount = "<div class='row'>" + `<div class='col-6'><h5 class='amt'>AMOUNT:</h5></div>` + `<div class='col-6'><input type='number' id='amount${i}'></div>`
                     $(temp).append(amount)
 
-
-
-
                     btn = "<span class='btn-border w-100 mt-2 mb-3'>" + `<button class='cmn-btn w-100 submit'  id='submit${i}'>` + 'Submit'
                     $(temp).append(btn)
 
@@ -164,6 +161,16 @@ $(document).ready(function () {
                                                         $(".successimg").css('display', 'none')
                                                         $("#successimg").css('display', 'none')
                                                     }, 1600);
+                                                    $.ajax({
+                                                        type: "GET",
+                                                        url: "/getbalance/",
+                                                        success: function(response){
+                                                            $('.bal').text(`${response['balance']}`)
+                                                        },
+                                                        error: function(error){
+                                                            
+                                                        }
+                                                    })
                                                 },
                                                 error: function (error) {
                                                     console.log(error)
@@ -295,6 +302,16 @@ $(document).ready(function () {
                                                         $(".successimg").css('display', 'none')
                                                         $("#successimg").css('display', 'none')
                                                     }, 1600);
+                                                    $.ajax({
+                                                        type: "GET",
+                                                        url: "/getbalance/",
+                                                        success: function(response){
+                                                            $('.bal').text(`${response['balance']}`)
+                                                        },
+                                                        error: function(error){
+                                                            
+                                                        }
+                                                    })
                                                 },
                                                 error: function (error) {
                                                     console.log(error)
@@ -428,6 +445,16 @@ $(document).ready(function () {
                                                         $(".successimg").css('display', 'none')
                                                         $("#successimg").css('display', 'none')
                                                     }, 1600);
+                                                    $.ajax({
+                                                        type: "GET",
+                                                        url: "/getbalance/",
+                                                        success: function(response){
+                                                            $('.bal').text(`${response['balance']}`)
+                                                        },
+                                                        error: function(error){
+                                                            
+                                                        }
+                                                    })
                                                 },
                                                 error: function (error) {
                                                     console.log(error)
@@ -562,6 +589,16 @@ $(document).ready(function () {
                                                         $(".successimg").css('display', 'none')
                                                         $("#successimg").css('display', 'none')
                                                     }, 1600);
+                                                    $.ajax({
+                                                        type: "GET",
+                                                        url: "/getbalance/",
+                                                        success: function(response){
+                                                            $('.bal').text(`${response['balance']}`)
+                                                        },
+                                                        error: function(error){
+                                                            
+                                                        }
+                                                    })
                                                 },
                                                 error: function (error) {
                                                     console.log(error)
@@ -620,7 +657,6 @@ $(document).ready(function () {
 
 
                 results[0].result.forEach(function (num) {
-                    console.log(num)
                     value = "<span class=' result sphere'>" + num
                     $("#result").append(value)
                 })

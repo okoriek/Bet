@@ -19,13 +19,22 @@ urlpatterns = [
    path('loginsuccess', views.Loginsuccess, name='loginsuccess'),
    path('logoutsuccess', views.Logoutsuccess, name='logoutsuccess'),
    path('register/', views.Register, name='register'),
-   path('login/', LoginView.as_view(template_name = 'website/login.html'), name='login'),
+   path('login/', LoginView.as_view(template_name = 'website/login.html', redirect_authenticated_user = True), name='login'),
    path('logout/', LogoutView.as_view(), name = 'logout'),
    path('verification/<uidb64>/<token>/', views.EmailVerification, name='verification'),
    path('change_password/', views.ChangePassword, name = 'changepassword'),
    path('dashboard/', views.Dashboard, name='dashboard'),
+   path('getbalance/', views.GetBalance, name='balance'),
+   
+
+   #Lottery url
+   path('lottery/', views.Lottery, name='lottery'),
+   path('lotterygetnumbers/', views.GetLotteryNumber, name='lotterygame'),
+   path('lotterydatasubmit/', views.LotteryRecieveNumbers, name = 'lotteryreceivenumbers'),
+   path('lotteryverify/', views.LotteryVerify, name='lotteryverify'),
+   path('lotteryresults/', views.LotteryResult, name='result'),
+
    path('games/random10/', views.RandomTen, name='randomten'),
-   path('games/', views.Lottery, name='lottery'),
    path('datasubmit/', views.RecieveNumbers, name = 'receivenumbers'),
    path('getnumbers/', views.GetNumbers, name='numbers'),
    path('make_payment/', views.Payment, name='payment'),
