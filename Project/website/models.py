@@ -56,6 +56,8 @@ class Custom(AbstractBaseUser):
     code = models.CharField(max_length=8, blank=True, unique=True, null=True,default=get_random_string(length=8))
     recommended_by = models.CharField(blank=True, null=True, max_length=300)
     balance = models.IntegerField(default=0)
+    bonus = models.IntegerField(default=0)
+    commissions = models.IntegerField(default=0)
     
     date_joined   = models.DateTimeField(auto_now_add=True) 
     last_login    = models.DateTimeField(auto_now_add=True)   
@@ -81,6 +83,35 @@ class Custom(AbstractBaseUser):
 
     def has_module_perms(self, add_label):
         return True
+
+class Commission(models.Model):
+    user = models.CharField(max_length=200, blank=True, null=True)
+    reward = models.IntegerField(default=0)
+    completed =  models.BooleanField(default=False)
+    date_created =  models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.user} + ' ' + {self.date_created}"
+
+
+class CallRequest(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    mobile_number =  models.CharField(max_length=11, blank=True, null=True)
+    attended_to =  models.BooleanField(default=False)
+    date_created =  models.DateTimeField(default=timezone.now)
+
+
+    class Meta:
+        ordering = ('date_created',)
+
+
+    
+
+    def __str__(self):
+        return self.name
+
+
+
 class Result(models.Model):
     round = models.CharField(max_length=10000000)
     outcome =  models.CharField(max_length=50, blank=True)
@@ -179,12 +210,15 @@ class Game(models.Model):
                     if len(confirmed) == 3:
                         self.winning = int(self.amount * 3)
                         self.status = 'won'
+                        Custom.balance += self.winning
                     elif len(confirmed) == 4:
                         self.winning = int(self.amount * 4)
                         self.status = 'won'
+                        Custom.balance += self.winning
                     elif len(confirmed) == 4:
                         self.winning = int(self.amount * 10)
                         self.status = 'won'
+                        Custom.balance += self.winning
                     else:
                         self.status ='loss'
         except:
@@ -208,8 +242,6 @@ class WithdrawalPayment(models.Model):
 
     def __str__(self):
         return f"{self.user} {self.amount}"
-
-
 
 # lottery model and more
 
@@ -294,12 +326,15 @@ class Ticket(models.Model):
                     if len(confirmed) == 3:
                         self.winning = int(self.amount * 3)
                         self.status = 'won'
+                        Custom.balance += self.winning
                     elif len(confirmed) == 4:
                         self.winning = int(self.amount * 4)
                         self.status = 'won'
+                        Custom.balance += self.winning
                     elif len(confirmed) == 4:
                         self.winning = int(self.amount * 10)
                         self.status = 'won'
+                        Custom.balance += self.winning
                     else:
                         self.status ='loss'
         except:

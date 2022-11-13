@@ -64,7 +64,7 @@ def Register(request):
         if forms.is_valid():
             user = forms.save(commit=False)
             try:
-                user.recommended_by = referred.username
+                user.recommended_by = referred.email
             except:
                 pass
             user.save()
@@ -105,8 +105,9 @@ def ChangePassword(request):
 def Dashboard(request):
     if request.user.is_staff:
         return redirect('Admin:staff_dashboard')
-    history = Userhistory.objects.all().filter(email=request.user.email).values()[:10]
-    arg = {'history':history}
+    user = Commission.objects.filter(user = str(request.user.email)).order_by('date_created')[:10]
+    history = Userhistory.objects.filter(email=str(request.user.email)).order_by('date_created')[:10]
+    arg = {'history':history, 'commission':user}
     return render(request, 'website/dashboard.html', arg)
 
 @login_required(login_url='/login')    
@@ -120,17 +121,34 @@ def FilterHistory(request):
     args = {'filter': filter, 'history':history}
     return render(request , 'website/transaction.html', args)
 
+
+def Affilate(request):
+    return render(request, 'website/affliate.html')
+
+
+def Help(request):
+    
+    return render(request, 'website/contact.html')
+
+
+
+def ContactUs(request):
+    name = request.POST['name']
+    phone_number = request.POST['phone']
+    new_call =  CallRequest.objects.create(name = name, mobile_number = phone_number)
+    new_call.save()
+    return JsonResponse('Call request intiated succesfully', safe=False)
+
 def GetBalance(request):
     user =  request.user
     profile =  Custom.objects.get(email = user)
     bal = profile.balance
     return JsonResponse({'balance': bal})
     
-
+@login_required(login_url='/login')    
 def RandomTen(request):
-    number =  NumberedValue.objects.all()
-    args = {'number': number}
-    return render(request, 'website/randomten.html', args)
+    
+    return render(request, 'website/randomten.html')
 
 def Lottery(request):
     return render(request, 'website/lottery.html')
@@ -189,9 +207,15 @@ def CreateNewRound(request):
 
 @login_required(login_url='/login')
 def Roundomhistory(request):
-    history = GameRound.objects.all().filter(ended = True).order_by('-time_generated')[:10]
+    history = Game.objects.all().filter(user = request.user).order_by('date_created')
     args = {'history': history}
     return render(request, 'website/gamehistory.html', args)
+
+@login_required(login_url='/login')
+def ResultHistory(request):
+    history =  GameRound.objects.filter(ended = True).order_by('time_generated')
+    args = {'history':history}
+    return render(request, 'website/result.html', args)
 
 def Result(request):
     resultgenerated =  GameRound.objects.filter(ended=True).order_by('-time_generated')[:1]
@@ -323,6 +347,20 @@ def LotteryResult(request):
         return JsonResponse({'data': data})
     except:
         pass
+
+
+@login_required(login_url='/login')
+def Lotteryhistory(request):
+    history = Ticket.objects.all().filter(user = request.user).order_by('date_created')
+    args = {'history': history}
+    print(args)
+    return render(request, 'website/ticket.html', args)
+    
+@login_required(login_url='/login')
+def LotteryResultHistory(request):
+    history =  LotteryRound.objects.filter(ended = True).order_by('time_generated')
+    args = {'history':history}
+    return render(request, 'website/lotteryresulthistory.html', args)
 
 
 

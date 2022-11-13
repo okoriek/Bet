@@ -23,8 +23,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Week</th>
-                                <th scope="col">Picks</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Result</th>
                                 <th scope="col">Date/Time</th>
                             </tr>
                         </thead>
@@ -32,18 +31,11 @@
                             {% for histories in history %}
                             <tr class="tablerow">
                                 <td>{{histories.week}}</td>
-                                <td>{% for i in histories.selectednumber %}
-                                    <span class="pick">{{i}}</span>
+                                <td>{% for i in histories.result %}
+                                    <span class="weeklyresult">{{i}}</span>
                                     {% endfor %}
                                 </td>
-                                <td>{% if histories.status == 'pending' %}
-                                    <span style="color:yellow"; >pending</span>
-                                    {% elif histories.status == 'won' %}
-                                    <span style="color:green"; >won</span>
-                                    {% else %}
-                                    <span style="color:red"; >loss</span>
-                                    {% endif %}</td>
-                                <th scope="row">{{histories.date_created|date:'y-m-d'}} ({{histories.date_created|time:'H:i'}})</th>
+                                <th scope="row">{{histories.time_generated|date:'y-m-d'}} ({{histories.time_generated|time:'H:i'}})</th>
                             </tr>
                             {% endfor %}
                         </tbody>

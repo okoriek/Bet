@@ -23,9 +23,8 @@
                                         type="button" aria-selected="false">Withdraw</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
-                                    data-bs-target="#affiliate" type="button" role="tab" aria-controls="affiliate"
-                                    aria-selected="false">affiliate</button>
+                                <a href="{% url 'affiliate' %}"><button class="nav-link" id="deposit-tab"
+                                        type="button" aria-selected="false">affiliate</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="{% url 'history' %}"><button class="nav-link" id="deposit-tab"
@@ -48,18 +47,18 @@
                 <div class="dashboard-sidebar">
                     <div class="single-item">
                         <img src="{% static 'assets/images/profile-img-1.png' %}" alt="images">
-                        <h5>Philip Dunn</h5>
-                        <p>ID: 32315145</p>
+                        <h5 >{{request.user.first_name}} {{request.user.last_name}}</h5>
+                        <p>Ref_ID: {{request.user.code}}</p>
                     </div>
                     <div class="balance">
                         <div class="single-item">
                             <img src="{% static 'assets/images/icon/dashboard-sidebar-icon-1.png' %}" alt="images">
-                            <h5>$5135.00</h5>
+                            <h5>₦ {{request.user.balance}}</h5>
                             <p>Available Balance</p>
                         </div>
                         <div class="bottom-area d-flex align-items-center justify-content-between">
-                            <a href="javascript:void(0)" class="mdr withdraw-btn">Withdraw</a>
-                            <a href="javascript:void(0)" class="mdr deposit-btn">Deposit</a>
+                            <a href="{% url 'withdrawal' %}" class="mdr withdraw-btn">Withdraw</a>
+                            <a href="{% url 'payment' %}" class="mdr deposit-btn">Deposit</a>
                         </div>
                     </div>
                     <div class="single-item">
@@ -102,11 +101,44 @@
                                 <div class="single-info">
                                     <img src="{% static 'assets/images/icon/user-info-icon-3.png' %}" alt="icon">
                                     <div class="text-area">
-                                        <h4>22</h4>
-                                        <p class="mdr">Achievements</p>
+                                        <h4>{{request.user.commissions}}</h4>
+                                        <p class="mdr">Referral</p>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Referral Program session -->
+                            <div class="col-12">
+                                <h5 class="title">Referral</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Date/Time</th>
+                                                <th scope="col">user</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">commission</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for com in commission %}
+                                            <tr>
+                                                <th scope="row">{{com.date_created}}</th>
+                                                <td>{{com.user}}</td>
+                                                {% if com.completed %}
+                                                    <td style="color: green;">successful</td>
+                                                {% else %}
+                                                    <td style="color:red ;">failed</td>
+                                                {% endif %}
+                                                <td>{{com.reward}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <!-- Recent activity section-->
                             <div class="col-12">
                                 <h5 class="title">Recent Activity</h5>
                                 <div class="table-responsive">

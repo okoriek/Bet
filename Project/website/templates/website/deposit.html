@@ -13,15 +13,14 @@
                                 <a href="{% url 'dashboard' %}"><button class="nav-link" id="deposit-tab"
                                         type="button" aria-selected="false">Dashboard</button></a>
                             </li>
-                            <li class="nav-item active" role="presentation">
-                                <button class="nav-link " id="dashboard-tab" data-bs-toggle="tab"
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab"
                                     data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard"
                                     aria-selected="true">Deposit</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="withdraw-tab" data-bs-toggle="tab"
-                                    data-bs-target="#withdraw" type="button" role="tab" aria-controls="withdraw"
-                                    aria-selected="false">withdraw</button>
+                                <a href="{% url 'withdrawal' %}"><button class="nav-link" id="deposit-tab"
+                                    type="button" aria-selected="false">Withdrawal</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="affiliate-tab" data-bs-toggle="tab"
@@ -29,9 +28,8 @@
                                     aria-selected="false">affiliate</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="transactions-tab" data-bs-toggle="tab"
-                                    data-bs-target="#transactions" type="button" role="tab" aria-controls="transactions"
-                                    aria-selected="false">transactions</button>
+                                <a href="{% url 'history' %}"><button class="nav-link" id="deposit-tab"
+                                        type="button" aria-selected="false">Transactions</button></a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting"

@@ -25,6 +25,12 @@ urlpatterns = [
    path('change_password/', views.ChangePassword, name = 'changepassword'),
    path('dashboard/', views.Dashboard, name='dashboard'),
    path('getbalance/', views.GetBalance, name='balance'),
+   path('affiliate/', views.Affilate, name='affiliate'),
+   path('help/', views.Help, name='help'),
+   path('contact/', views.ContactUs, name='contact'),
+   
+
+
    
 
    #Lottery url
@@ -33,6 +39,8 @@ urlpatterns = [
    path('lotterydatasubmit/', views.LotteryRecieveNumbers, name = 'lotteryreceivenumbers'),
    path('lotteryverify/', views.LotteryVerify, name='lotteryverify'),
    path('lotteryresults/', views.LotteryResult, name='result'),
+    path('ticket_history/', views.Lotteryhistory, name='tickethistory'),
+   path('lottery_result_history/', views.LotteryResultHistory, name='lotteryresulthistory'),
 
    path('games/random10/', views.RandomTen, name='randomten'),
    path('datasubmit/', views.RecieveNumbers, name = 'receivenumbers'),
@@ -46,6 +54,7 @@ urlpatterns = [
    path('create/', views.CreateNewRound, name='create'),
    path('results/', views.Result, name='result'),
    path('game_history/', views.Roundomhistory, name='gamehistory'),
+   path('history_result/', views.ResultHistory, name='resulthistory'),
    
    
    

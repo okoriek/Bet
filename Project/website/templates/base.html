@@ -85,11 +85,14 @@
 
                                 <li class="nav-item dropdown main-navbar d-none d-lg-block">
                                     <a class="nav-link " href="javascript:void(0)" data-bs-toggle="dropdown"
-                                        data-bs-auto-close="outside">Balance</i></a>
+                                        data-bs-auto-close="outside">Balance</a>
                                     <span class="dropdown-menu main-menu shadow">
-                                        <span
-                                            class="bal d-none d-lg-block"><span>main:</span>{{request.user.balance}}</span>
-                                        <span class="bal d-none d-lg-block"><span>bonus:</span>0</span>
+                                        <span class="bal d-none d-lg-block"><span>main:</span>{{request.user.balance}}</span>
+                                        {% if request.user.balance %}
+                                            <span class="bonus d-none d-lg-block"><span>bonus:</span>0</span>
+                                        {% else %}
+                                            {{empty}}
+                                        {% endif %}
                                     </span>
                                 </li>
 
@@ -120,7 +123,7 @@
                                             class="fa-solid fa-dharmachakra"></i> Spinwin <i class="fa-solid fa-lock"></i></a>
                                 </span>
                                 <span class="nav-item">
-                                    <a class="nav-link active text-light " aria-current="page" href=""><i
+                                    <a class="nav-link active text-light " aria-current="page" href="{% url 'help' %}"><i
                                             class="fas fa-info-circle"></i> Help</a>
                                 </span>
                             </div>
@@ -129,6 +132,10 @@
                 </div>
             </div>
         </div>
+
+
+
+        <!-- Unauthenticated user navbar display --->
         {% else %}
         <div class="overlay">
             <div class="container">
@@ -153,34 +160,38 @@
                                 </span>
 
                                 <li class="nav-item dropdown main-navbar d-none d-lg-block">
-                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Games</a>
+                                    <a class="nav-link " href="javascript:void(0)"
+                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Games <i class="fa-solid fa-caret-down"></i></a>
                                     <ul class="dropdown-menu main-menu shadow">
-                                        <a class="nav-link active text-light " aria-current="page" href="{url 'randomten'}"><i
+                                        <a class="nav-link active text-light " aria-current="page" href="{% url 'randomten' %}"><i
                                                 class="fas fa-bowling-ball"></i> Ball 8</a>
-                                        <a class="nav-link active text-light " aria-current="page" href="{url 'lottery'}"><i
-                                            class="fas fa-bowling-ball"></i> Lottery</a>
+                                        <a class="nav-link active text-light " aria-current="page" href="{% url 'lottery' %}">
+                                            <i class="fa-solid fa-briefcase"></i> Lottery</a>
                                         <a class="nav-link active text-light " aria-current="page" href=""><i
                                                 class="fas fa-dharmachakra"></i> Spin&win <i class="fa-solid fa-lock"></i></a>
-                                        <a class="nav-link active text-light " aria-current="page" href=""><i
+                                        <a class="nav-link active text-light " aria-current="page" href="{% url 'help' %}"><i
                                                 class="fas fa-info-circle"></i> Help</a>
                                     </ul>
                                 </li>
                                 <span class="nav-item d-none d-lg-block">
                                     <a class="nav-link active text-light " aria-current="page"
-                                        href="{% url 'login' %}"><i class="fas fa-sign-out-alt"></i>LOGIN</a>
+                                        href="{% url 'login' %}"><i class="fas fa-sign-out-alt"></i> Login</a>
                                 </span>
 
                                 <span class="nav-item">
-                                    <a class="nav-link active text-light d-lg-none" aria-current="page" href=""><i
+                                    <a class="nav-link active text-light d-lg-none" aria-current="page" href="{% url 'randomten' %}"><i
                                             class="fas fa-bowling-ball"></i> Ball 8</a>
+                                </span>
+                                <span class="nav-item">
+                                    <a class="nav-link active text-light d-lg-none" aria-current="page" href="{% url 'lottery' %}">
+                                        <i class="fa-solid fa-briefcase"></i> Lottery</a>
                                 </span>
                                 <span class="nav-item">
                                     <a class="nav-link active text-light d-lg-none" aria-current="page" href=""><i
                                             class="fas fa-dharmachakra"></i> Spin&win <i class="fa-solid fa-lock"></i></a>
                                 </span>
                                 <span class="nav-item">
-                                    <a class="nav-link active text-light " aria-current="page" href=""><i
+                                    <a class="nav-link active text-light " aria-current="page" href="{% url 'help' %}"><i
                                             class="fas fa-info-circle"></i> Help</a>
                                 </span>
                             </div>

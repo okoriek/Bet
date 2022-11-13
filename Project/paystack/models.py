@@ -1,9 +1,8 @@
-import imp
 from django.db import models
 from django.utils import timezone
 import secrets
 from .paystack import PayStackPayment
-from  website.models import Custom
+from  website.models import *
 from flutterwave.models import FlutterWave
 
 
@@ -42,6 +41,15 @@ class Paystack(models.Model):
         if self.verified:
             user = Custom.objects.get(email = self.email)
             user.balance += int(self.amount)
+            try:
+                amount = (int(self.amount) * 2) / 100
+                ref_bonus =  Commission.objects.create(user = user.recommended_by, reward=amount, completed = self.verified)
+                ref_bonus.save()
+                referral = Custom.objects.get(email = user.recommended_by)
+                referral.commissions += amount
+                referral.save()
+            except:
+                pass
             user.save()
             return True
         return False
@@ -65,7 +73,7 @@ class Userhistory(models.Model):
 
 
     def __str__(self):
-        return f"{self.transaction}: {self.amount}"
+        return f"{self.email}  {self.transaction}: {self.amount}"
     
     
         
