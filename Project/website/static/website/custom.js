@@ -649,8 +649,10 @@ $(document).ready(function () {
             type: 'GET',
             url: '/results/',
             success: function (response) {
-
+                $(".wk").remove()
+                $(".result").remove()
                 const results = response.data
+                
                 var wk = results[0].week
                 wks = `<span class='wk'>wk${wk}:</span>`
                 $("#result").append(wks)

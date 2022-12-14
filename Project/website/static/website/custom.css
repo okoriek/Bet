@@ -632,7 +632,7 @@
     position: relative;
     margin-top: calc(100% - 30%);
     margin-bottom: calc(100% - 30%);
-    margin-left: 16px;
+    margin-left: 100px;
     border-radius: 20px;
 }
 /* for large screen */
@@ -676,7 +676,6 @@
     
 }
 /* Result handling */
-
 .tablerow{
     border-bottom: 1px solid rgb(192, 191, 191);
 }
@@ -768,11 +767,12 @@
 
 #result{
     background-color: black; 
-    height: 70px;
+    height: auto;
     width: 100%;
     margin-bottom: 20px;
     justify-content: center;
     justify-items: center;
+    padding-bottom: 10px;
     
     
 }
@@ -784,13 +784,14 @@
     font-size: small;
     padding-top: 5px;
     text-align: center;
-    margin-left: 5px;
+   
 
 }
 .wk{
     margin-top: 20px;
     color: yellow;
-    font-size: x-large;
+    font-size: large;
+    padding-right: 5px;
 }
 
 /* for ipad screen screen above */

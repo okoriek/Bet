@@ -207,7 +207,7 @@ def CreateNewRound(request):
 
 @login_required(login_url='/login')
 def Roundomhistory(request):
-    history = Game.objects.all().filter(user = request.user).order_by('date_created')
+    history = Game.objects.all().filter(user = request.user).order_by('date_created')[:10]
     args = {'history': history}
     return render(request, 'website/gamehistory.html', args)
 
@@ -226,6 +226,7 @@ def Result(request):
             'result': i.result
         }
         data.append(item)
+    
     return JsonResponse({'data': data})
 
 def Withdrawal(request):

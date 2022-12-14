@@ -12,7 +12,7 @@ def Create():
 
 # Celery for lottery 
 @shared_task
-def Create():
+def CreateLottery():
     one = LotteryRound.objects.last()
     rounds = int(one.week) + 1
     LotteryRound.objects.create(week = rounds, time_generated = one.time_ending)

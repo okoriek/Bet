@@ -1,7 +1,5 @@
 import datetime
 from datetime import time
-from multiprocessing.reduction import duplicate
-from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.crypto import get_random_string
@@ -210,15 +208,18 @@ class Game(models.Model):
                     if len(confirmed) == 3:
                         self.winning = int(self.amount * 3)
                         self.status = 'won'
-                        Custom.balance += self.winning
+                        self.user.balance += int(self.amount * 3)
+                        self.user.save()
                     elif len(confirmed) == 4:
-                        self.winning = int(self.amount * 4)
+                        self.winning = int(self.amount * 5)
                         self.status = 'won'
-                        Custom.balance += self.winning
+                        self.user.balance += int(self.amount * 5)
+                        self.user.save()
                     elif len(confirmed) == 4:
                         self.winning = int(self.amount * 10)
                         self.status = 'won'
-                        Custom.balance += self.winning
+                        self.user.balance += int(self.amount * 10)
+                        self.user.save()
                     else:
                         self.status ='loss'
         except:

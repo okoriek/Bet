@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from paystack.models import Userhistory
 
 
+
 @receiver(post_save, sender = Paystack)
 def HistoryPaystack(sender, created, instance, **kwargs):
     if created:
