@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 
+ 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-h_-mw2x7)q**%bi%pjwaewxcuy*-ziit_5e-&q68l&*k=w7=$b'
-SECRET_KEY ='django-insecure-h_-mw2x7)q**%bi%pjwaewxcuy*-ziit_5e-&q68l&*k=w7=$b'
+SECRET_KEY =os.environ.get('DEBUG')
 
 
 PAYSTACK_PUBLIC_KEY = os.environ.get('PUBLIC_SECRET_KEY')
@@ -162,11 +164,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Bet',
-        'USER': 'postgres',
-        'PASSWORD':'46347223',
-        'HOST':'127.0.0.1',
-        'PORT':5432
+        'NAME':os.environ.get('POSTGRES_DB'),
+        'USER':os.environ.get('POSTGRES_USER'),
+        'PASSWORD':os.environ.get('POSTGRES_PASSWORD'),
+        'HOST':os.environ.get('POSTGRES_HOST'),
+        'PORT':os.environ.get('POSTGRES_PORT')
     }
 }
 
