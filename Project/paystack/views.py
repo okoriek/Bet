@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.conf import settings
+import os
 from  paystack.models import Paystack
 from .forms import PaymentForm
 from django.conf import settings
@@ -15,7 +15,7 @@ def InitializeDeposit(request):
         payment_form = PaymentForm(request.POST)
         if payment_form.is_valid():
             payment=payment_form.save()
-            return render(request, 'payment/confirm.html', {'payment':payment, 'PUBLIC_KEY':settings.PAYSTACK_PUBLIC_KEY})
+            return render(request, 'payment/confirm.html', {'payment':payment, 'PUBLIC_KEY':os.environ.get('PAYSTACK_PUBLIC_KEY')})
     else:
         payment_form =  PaymentForm(initial=value)
     args = {'forms':payment_form}

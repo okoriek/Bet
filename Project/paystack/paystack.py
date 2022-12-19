@@ -1,9 +1,9 @@
 from django.conf import settings
 import requests
-
+import os
 
 def BankList():
-    SECRET_KEY = settings.PAYSTACK_PRIVATE_KEY
+    SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
     base_url = 'https://api.paystack.co/bank'
 
     header = {
@@ -25,7 +25,7 @@ def BankList():
  
 
 def InitiatingTransfer(account_name, account_no, bank_code):
-    SECRET_KEY = settings.PAYSTACK_PRIVATE_KEY
+    SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
     base_url = 'https://api.paystack.co/transferrecipient'
 
     header = {
@@ -48,7 +48,7 @@ def InitiatingTransfer(account_name, account_no, bank_code):
     return response.status_code
 
 def MakePayment(amount, recipient_code):
-    SECRET_KEY = settings.PAYSTACK_PRIVATE_KEY
+    SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
     base_url = 'https://api.paystack.co/transfer'
 
     header = {
@@ -72,7 +72,7 @@ def MakePayment(amount, recipient_code):
 
             
 def VerifyAccount(account, code):
-    SECRET_KEY = settings.PAYSTACK_PRIVATE_KEY
+    SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
     base_url = 'https://api.paystack.co/bank/resolve'
 
     header = {
@@ -94,7 +94,7 @@ def VerifyAccount(account, code):
 
 
 class PayStackPayment():
-    SECRET_KEY = settings.PAYSTACK_PRIVATE_KEY
+    SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
     base_url = 'https://api.paystack.co'
 
     def verify_payment(self, reference, *arg, **kwargs):

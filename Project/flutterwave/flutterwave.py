@@ -1,9 +1,11 @@
 import json
 from django.conf import settings
 import requests
+import os
 
 class FlutterWavePayment():
-    SECRET_KEY = settings.FLUTTERWAVE_SECRET_KEY
+    SECRET_KEY = os.environ.get('FLUTTERWAVE_SECRET_KEY')
+
     base_url = 'https://api.flutterwave.com/v3'
 
     def confirm_payment(self, reference, *arg, **kwargs):
